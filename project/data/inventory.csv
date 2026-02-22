@@ -1,0 +1,36 @@
+item_id,name,category,quantity,location,status,last_updated
+INV-001,MacBook Pro 14" M3 Pro,laptop,45,HQ-Floor3-IT-Storage,in_stock,2026-01-15
+INV-002,Dell Latitude 5540,laptop,30,HQ-Floor3-IT-Storage,in_stock,2026-01-10
+INV-003,Lenovo ThinkPad X1 Carbon Gen 11,laptop,12,Remote-Warehouse-B,in_stock,2026-02-01
+INV-004,Dell U2723QE 27" 4K Monitor,monitor,60,HQ-Floor2-Storage,in_stock,2026-01-20
+INV-005,LG 27UK850-W 27" 4K Monitor,monitor,25,HQ-Floor2-Storage,in_stock,2025-12-15
+INV-006,Apple Pro Display XDR,monitor,3,Executive-Suite,reserved,2026-01-05
+INV-007,Logitech MX Keys S,keyboard,80,HQ-Floor3-IT-Storage,in_stock,2026-02-10
+INV-008,Logitech MX Master 3S,mouse,75,HQ-Floor3-IT-Storage,in_stock,2026-02-10
+INV-009,Jabra Evolve2 75,headset,40,HQ-Floor3-IT-Storage,in_stock,2026-01-25
+INV-010,Poly Voyager Focus 2,headset,20,Remote-Warehouse-B,in_stock,2026-01-18
+INV-011,CalDigit TS4 Thunderbolt 4 Dock,docking_station,35,HQ-Floor3-IT-Storage,in_stock,2026-02-05
+INV-012,Lenovo ThinkPad USB-C Dock Gen 2,docking_station,28,HQ-Floor3-IT-Storage,in_stock,2026-01-22
+INV-013,Logitech Brio 4K Ultra HD Webcam,webcam,50,HQ-Floor3-IT-Storage,in_stock,2026-01-30
+INV-014,Poly Studio P15 Video Bar,webcam,15,HQ-Floor2-Storage,in_stock,2026-01-12
+INV-015,Yealink T54W IP Phone,phone,40,HQ-Floor1-Telecom,in_stock,2026-02-08
+INV-016,iPad Air M2 11",tablet,18,HQ-Floor3-IT-Storage,in_stock,2026-01-28
+INV-017,HP LaserJet Pro M404dn,printer,8,HQ-Floor2-PrintRoom,in_stock,2025-11-20
+INV-018,HP Color LaserJet Pro MFP M479fdw,printer,5,HQ-Floor4-PrintRoom,maintenance,2026-02-14
+INV-019,Ubiquiti UniFi U6 Pro Access Point,network_equipment,22,HQ-Network-Closet-A,in_stock,2026-01-08
+INV-020,Cisco Meraki MS120-8LP Switch,network_equipment,10,HQ-Network-Closet-A,in_stock,2025-12-20
+INV-021,Anker USB-C Hub 7-in-1,accessory,90,HQ-Floor3-IT-Storage,in_stock,2026-02-12
+INV-022,Rain Design mStand Laptop Stand,accessory,55,HQ-Floor3-IT-Storage,in_stock,2026-01-14
+INV-023,Dell Latitude 7440,laptop,0,HQ-Floor3-IT-Storage,out_of_stock,2026-02-18
+INV-024,Samsung 27" ViewFinity S8 4K Monitor,monitor,4,Remote-Warehouse-B,low_stock,2026-02-03
+INV-025,Apple Magic Keyboard with Touch ID,keyboard,15,HQ-Floor3-IT-Storage,in_stock,2026-01-19
+INV-026,Apple Magic Mouse,mouse,12,HQ-Floor3-IT-Storage,low_stock,2026-02-06
+INV-027,Sony WH-1000XM5 Headphones,headset,0,HQ-Floor3-IT-Storage,out_of_stock,2026-02-15
+INV-028,Jabra PanaCast 50 Video Bar,webcam,6,HQ-Floor4-ConferenceRoom,reserved,2026-01-25
+INV-029,Belkin Thunderbolt 4 Cable 2m,accessory,120,HQ-Floor3-IT-Storage,in_stock,2026-02-11
+INV-030,Cisco Meraki MR46 Access Point,network_equipment,8,Remote-Warehouse-B,in_stock,2025-12-10
+INV-031,HP OfficeJet Pro 9125e,printer,3,HQ-Floor1-Reception,low_stock,2026-01-03
+INV-032,Lenovo ThinkVision T27p-30 27" 4K,monitor,18,HQ-Floor2-Storage,in_stock,2026-02-07
+INV-033,Microsoft Surface Pro 10,tablet,7,HQ-Floor3-IT-Storage,in_stock,2026-02-09
+INV-034,Logitech Rally Bar Mini,webcam,4,HQ-Floor4-ConferenceRoom,reserved,2026-01-20
+INV-035,Yealink CP965 Conference Phone,phone,6,HQ-Floor4-ConferenceRoom,in_stock,2026-01-11
