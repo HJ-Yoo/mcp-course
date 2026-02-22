@@ -4,7 +4,7 @@
 
 ---
 
-## Module A: MCP 기초 (3편, 1시간)
+## Chapter 1: MCP 기초 (3편, 1시간)
 
 ### EP 01 — MCP란 무엇인가?
 
@@ -44,7 +44,7 @@
 
 ---
 
-## Module B: Tools 심화 (6편, 2시간)
+## Chapter 2: Tools 심화 (6편, 2시간)
 
 ### EP 04 — Tool 기초: 함수를 도구로
 
@@ -117,7 +117,7 @@
 
 ---
 
-## Module C: Resources & Prompts (7편, 2시간 20분)
+## Chapter 3: Resources & Prompts (7편, 2시간 20분)
 
 ### EP 10 — Resource 기초: 데이터를 노출하라
 
@@ -205,7 +205,7 @@
 
 ---
 
-## Module D: 통합 & 배포 (5편, 1시간 40분)
+## Chapter 4: 통합 & 배포 (5편, 1시간 40분)
 
 ### EP 17 — Streamable HTTP Transport
 
@@ -269,7 +269,7 @@
 
 ---
 
-## Module E: Advanced (6편, 2시간)
+## Chapter 5: Advanced (6편, 2시간)
 
 ### EP 22 — OAuth 2.1 & 인증 게이트웨이
 

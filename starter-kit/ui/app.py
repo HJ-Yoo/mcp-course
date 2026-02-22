@@ -2,10 +2,10 @@
 Gradio Chat UI for the Internal Ops Assistant MCP Server.
 
 This provides a complete demo of the MCP flow:
-  User message → LLM (Claude / GPT / Gemini) → MCP tool calls → Results → LLM response
+  User message → LLM (Claude / GPT) → MCP tool calls → Results → LLM response
 
 Features:
-  - Chat interface with multi-LLM backend (Anthropic, OpenAI, Google Gemini)
+  - Chat interface with multi-LLM backend (Anthropic, OpenAI)
   - Real-time MCP log panel showing tool calls and results
   - Transport selector: stdio or Streamable HTTP
   - API key input with dynamic provider dropdown
@@ -61,11 +61,6 @@ PROVIDERS: dict[str, dict] = {
         "label": "OpenAI GPT",
         "model": "gpt-4o",
         "env_key": "OPENAI_API_KEY",
-    },
-    "google": {
-        "label": "Google Gemini",
-        "model": "gemini-2.0-flash",
-        "env_key": "GOOGLE_API_KEY",
     },
 }
 
@@ -217,79 +212,6 @@ async def _run_openai(messages: list[dict], claude_tools: list[dict]) -> str:
     return "⚠️ Tool call loop limit reached."
 
 
-async def _run_google(messages: list[dict], claude_tools: list[dict]) -> str:
-    """Agentic loop using the Google GenAI SDK (function calling)."""
-    from google import genai
-    from google.genai import types
-
-    client = genai.Client(api_key=os.environ["GOOGLE_API_KEY"])
-    model = PROVIDERS["google"]["model"]
-
-    # Convert MCP tools to Gemini function declarations
-    declarations = []
-    for t in claude_tools:
-        schema = dict(t["input_schema"])
-        schema.pop("additionalProperties", None)
-        declarations.append(types.FunctionDeclaration(
-            name=t["name"],
-            description=t["description"],
-            parameters=schema,
-        ))
-    gemini_tools = [types.Tool(function_declarations=declarations)]
-
-    # Build contents for Gemini
-    contents = []
-    for msg in messages:
-        role = msg.get("role", "user")
-        content = msg.get("content", "")
-        if isinstance(content, str) and role in ("user", "assistant"):
-            gemini_role = "model" if role == "assistant" else "user"
-            contents.append(types.Content(
-                role=gemini_role,
-                parts=[types.Part.from_text(text=content)],
-            ))
-
-    config = types.GenerateContentConfig(
-        system_instruction=SYSTEM_PROMPT,
-        tools=gemini_tools,
-    )
-
-    for _ in range(10):
-        response = client.models.generate_content(
-            model=model,
-            contents=contents,
-            config=config,
-        )
-
-        # Check for function calls
-        has_fn_call = False
-        fn_responses = []
-
-        if response.candidates and response.candidates[0].content:
-            for part in response.candidates[0].content.parts:
-                if part.function_call:
-                    has_fn_call = True
-                    fc = part.function_call
-                    args = dict(fc.args) if fc.args else {}
-                    result = await mcp_client.call_tool(fc.name, args)
-                    fn_responses.append(types.Part.from_function_response(
-                        name=fc.name,
-                        response={"result": result},
-                    ))
-
-        if has_fn_call:
-            # Add model response + function results to contents
-            contents.append(response.candidates[0].content)
-            contents.append(types.Content(
-                role="user",
-                parts=fn_responses,
-            ))
-        else:
-            return response.text or ""
-
-    return "⚠️ Tool call loop limit reached."
-
-
 # ---------------------------------------------------------------------------
 # Main agent chat
 # ---------------------------------------------------------------------------
@@ -332,8 +254,6 @@ async def agent_chat(
             final_text = await _run_anthropic(messages, claude_tools)
         elif provider == "openai":
             final_text = await _run_openai(messages, claude_tools)
-        elif provider == "google":
-            final_text = await _run_google(messages, claude_tools)
         else:
             final_text = "⚠️ Provider not implemented."
     except Exception as e:
@@ -384,7 +304,7 @@ def build_ui() -> gr.Blocks:
     ) as demo:
         gr.Markdown(
             "# 🏢 Acme Corp Internal Ops Assistant\n"
-            "> MCP-powered IT operations chatbot — Claude / GPT / Gemini + Tools + Resources",
+            "> MCP-powered IT operations chatbot — Claude / GPT + Tools + Resources",
             elem_classes="header",
         )
 
@@ -434,7 +354,7 @@ def build_ui() -> gr.Blocks:
                 gr.Markdown("### 🤖 LLM Provider")
                 api_key_input = gr.Textbox(
                     label="API Key",
-                    placeholder="Enter API key (sk-ant-..., sk-..., or AI...)",
+                    placeholder="Enter API key (sk-ant-... or sk-...)",
                     type="password",
                 )
                 provider_dropdown = gr.Dropdown(
@@ -468,9 +388,6 @@ def build_ui() -> gr.Blocks:
             if api_key.startswith("sk-ant-"):
                 os.environ["ANTHROPIC_API_KEY"] = api_key
                 detected.append("anthropic")
-            elif api_key.startswith("AI"):
-                os.environ["GOOGLE_API_KEY"] = api_key
-                detected.append("google")
             else:
                 # Default: try as OpenAI key
                 os.environ["OPENAI_API_KEY"] = api_key

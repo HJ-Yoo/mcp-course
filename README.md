@@ -71,11 +71,11 @@ mcp-course/
 ├── README.md                    # 이 파일
 ├── curriculum.md                # 전체 커리큘럼 (27편)
 ├── lectures/                    # 에피소드별 강의 노트
-│   ├── module-a/                # Module A: MCP 기초
+│   ├── chapter-1/               # Chapter 1: MCP 기초
 │   │   ├── ep01-what-is-mcp.md
 │   │   ├── ep02-architecture.md
 │   │   └── ep03-first-server.md
-│   └── module-b/                # Module B: Tools 심화
+│   └── chapter-2/               # Chapter 2: Tools 심화
 │       ├── ep04-tool-basics.md
 │       ├── ep05-inventory-tool.md
 │       ├── ep06-error-handling.md
@@ -83,11 +83,11 @@ mcp-course/
 │       ├── ep08-validation.md
 │       └── ep09-ticket-tool.md
 ├── slides/                      # 에피소드별 슬라이드 (Marp)
-│   ├── module-a/
+│   ├── chapter-1/
 │   │   ├── ep01-slides.md
 │   │   ├── ep02-slides.md
 │   │   └── ep03-slides.md
-│   └── module-b/
+│   └── chapter-2/
 │       ├── ep04-slides.md
 │       ├── ep05-slides.md
 │       ├── ep06-slides.md
@@ -140,11 +140,11 @@ mcp-course/
 
 | 모듈 | 편수 | 시간 | 주제 |
 |------|------|------|------|
-| **Module A** | EP 01-03 | 1시간 | MCP 기초 — 개념, 아키텍처, 첫 서버 |
-| **Module B** | EP 04-09 | 2시간 | Tools 심화 — 재고, 정책, 티켓, 보안 |
-| **Module C** | EP 10-16 | 2시간 20분 | Resources & Prompts — 데이터 노출, 템플릿, 테스트 |
-| **Module D** | EP 17-21 | 1시간 40분 | 통합 & 테스트 — Transport, 클라이언트 연동, 캡스톤 |
-| **Module E** | EP 22-27 | 2시간 | Advanced — 인증, Docker, 모니터링, 프로덕션 |
+| **Chapter 1** | EP 01-03 | 1시간 | MCP 기초 — 개념, 아키텍처, 첫 서버 |
+| **Chapter 2** | EP 04-09 | 2시간 | Tools 심화 — 재고, 정책, 티켓, 보안 |
+| **Chapter 3** | EP 10-16 | 2시간 20분 | Resources & Prompts — 데이터 노출, 템플릿, 테스트 |
+| **Chapter 4** | EP 17-21 | 1시간 40분 | 통합 & 테스트 — Transport, 클라이언트 연동, 캡스톤 |
+| **Chapter 5** | EP 22-27 | 2시간 | Advanced — 인증, Docker, 모니터링, 프로덕션 |
 
 ## 스타터킷 사용법
 
