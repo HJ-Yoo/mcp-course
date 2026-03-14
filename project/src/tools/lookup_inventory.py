@@ -1,13 +1,12 @@
 """
 Tool: lookup_inventory
 
-Searches the inventory by name or category using fuzzy substring matching.
+Searches the inventory by name or category using SQL LIKE pattern matching.
 """
 
 from __future__ import annotations
 
 import json
-from dataclasses import asdict
 
 from mcp.server.fastmcp import Context
 
@@ -26,7 +25,7 @@ def register(mcp) -> None:
         """Search inventory items by name or category.
 
         Performs a case-insensitive substring match against item names
-        and categories. Returns up to 10 matching items as JSON.
+        and categories using SQL LIKE. Returns up to 10 matching items as JSON.
 
         Args:
             query: Search term to match against item name or category.
@@ -39,14 +38,18 @@ def register(mcp) -> None:
         logger = AuditLogger(app.audit_log_path)
 
         sanitized = sanitize_query(query)
+        like_pattern = f"%{sanitized}%"
 
-        matches = [
-            item
-            for item in app.inventory
-            if sanitized in item.name.lower() or sanitized in item.category.lower()
-        ]
+        rows = app.db.execute(
+            """SELECT item_id, name, category, quantity,
+                      location, status, last_updated
+               FROM inventory
+               WHERE LOWER(name) LIKE ? OR LOWER(category) LIKE ?
+               LIMIT ?""",
+            (like_pattern, like_pattern, MAX_RESULTS),
+        ).fetchall()
 
-        if not matches:
+        if not rows:
             result = f"No items found matching '{sanitized}'"
             logger.log(
                 action="lookup",
@@ -57,9 +60,8 @@ def register(mcp) -> None:
             )
             return result
 
-        limited = matches[:MAX_RESULTS]
         result_json = json.dumps(
-            [asdict(item) for item in limited],
+            [dict(row) for row in rows],
             ensure_ascii=False,
             indent=2,
         )
@@ -68,7 +70,7 @@ def register(mcp) -> None:
             action="lookup",
             tool_name="lookup_inventory",
             input_summary=f"query={sanitized}",
-            result_summary=f"Found {len(limited)} item(s)",
+            result_summary=f"Found {len(rows)} item(s)",
             success=True,
         )
         return result_json

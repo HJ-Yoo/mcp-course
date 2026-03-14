@@ -10,6 +10,7 @@ from __future__ import annotations
 import csv
 import json
 import re
+import sqlite3
 from dataclasses import dataclass, field
 from datetime import datetime, timezone
 from enum import Enum
@@ -78,7 +79,7 @@ class Ticket:
 
 @dataclass
 class AppContext:
-    inventory: list[InventoryItem]
+    db: sqlite3.Connection
     policies: list[PolicyDoc]
     policy_dir: Path
     tickets_file: Path
@@ -93,7 +94,7 @@ class AppContext:
         data_dir = base / "data"
         policy_dir = data_dir / "policies"
 
-        inventory = cls._load_inventory(data_dir / "inventory.csv")
+        db = cls._init_db(data_dir / "inventory.csv")
         policies = cls._load_policy_index(policy_dir)
 
         tickets_file = data_dir / "tickets" / "tickets.jsonl"
@@ -103,7 +104,7 @@ class AppContext:
         audit_log_path.parent.mkdir(parents=True, exist_ok=True)
 
         return cls(
-            inventory=inventory,
+            db=db,
             policies=policies,
             policy_dir=policy_dir,
             tickets_file=tickets_file,
@@ -114,24 +115,29 @@ class AppContext:
     # Helpers
     # ------------------------------------------------------------------
     @staticmethod
-    def _load_inventory(path: Path) -> list[InventoryItem]:
-        items: list[InventoryItem] = []
-        if not path.exists():
-            return items
-        with path.open(newline="", encoding="utf-8") as f:
-            for row in csv.DictReader(f):
-                items.append(
-                    InventoryItem(
-                        item_id=row["item_id"],
-                        name=row["name"],
-                        category=row["category"],
-                        quantity=int(row["quantity"]),
-                        location=row["location"],
-                        status=row["status"],
-                        last_updated=row["last_updated"],
+    def _init_db(csv_path: Path) -> sqlite3.Connection:
+        db = sqlite3.connect(":memory:")
+        db.row_factory = sqlite3.Row
+        db.execute("""CREATE TABLE inventory (
+            item_id TEXT PRIMARY KEY,
+            name TEXT NOT NULL,
+            category TEXT NOT NULL,
+            quantity INTEGER NOT NULL,
+            location TEXT NOT NULL,
+            status TEXT NOT NULL,
+            last_updated TEXT NOT NULL
+        )""")
+        if csv_path.exists():
+            with csv_path.open(newline="", encoding="utf-8") as f:
+                for row in csv.DictReader(f):
+                    db.execute(
+                        "INSERT INTO inventory VALUES (?,?,?,?,?,?,?)",
+                        (row["item_id"], row["name"], row["category"],
+                         int(row["quantity"]), row["location"],
+                         row["status"], row["last_updated"]),
                     )
-                )
-        return items
+            db.commit()
+        return db
 
     @staticmethod
     def _load_policy_index(policy_dir: Path) -> list[PolicyDoc]:

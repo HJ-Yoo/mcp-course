@@ -7,6 +7,7 @@ directories so that tests never touch production data.
 
 from __future__ import annotations
 
+import sqlite3
 from pathlib import Path
 
 import pytest
@@ -47,6 +48,31 @@ def sample_inventory() -> list[InventoryItem]:
             last_updated="2026-02-01",
         ),
     ]
+
+
+@pytest.fixture
+def sample_db(sample_inventory: list[InventoryItem]) -> sqlite3.Connection:
+    """In-memory SQLite DB populated with sample inventory data."""
+    db = sqlite3.connect(":memory:")
+    db.row_factory = sqlite3.Row
+    db.execute("""CREATE TABLE inventory (
+        item_id TEXT PRIMARY KEY,
+        name TEXT NOT NULL,
+        category TEXT NOT NULL,
+        quantity INTEGER NOT NULL,
+        location TEXT NOT NULL,
+        status TEXT NOT NULL,
+        last_updated TEXT NOT NULL
+    )""")
+    for item in sample_inventory:
+        db.execute(
+            "INSERT INTO inventory VALUES (?,?,?,?,?,?,?)",
+            (item.item_id, item.name, item.category,
+             item.quantity, item.location, item.status,
+             item.last_updated),
+        )
+    db.commit()
+    return db
 
 
 @pytest.fixture
@@ -112,7 +138,7 @@ def sample_policies(tmp_path: Path) -> list[PolicyDoc]:
 @pytest.fixture
 def app_context(
     tmp_path: Path,
-    sample_inventory: list[InventoryItem],
+    sample_db: sqlite3.Connection,
     sample_policies: list[PolicyDoc],
 ) -> AppContext:
     """Fully wired AppContext using temporary directories."""
@@ -125,7 +151,7 @@ def app_context(
     policy_dir = tmp_path / "policies"
 
     return AppContext(
-        inventory=sample_inventory,
+        db=sample_db,
         policies=sample_policies,
         policy_dir=policy_dir,
         tickets_file=tickets_file,

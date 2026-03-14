@@ -7,24 +7,31 @@ without spinning up the full MCP server.
 
 from __future__ import annotations
 
+import sqlite3
+
 import pytest
 
-from src.models import ErrorCode, InventoryItem, ToolError
+from src.models import ErrorCode, ToolError
 from src.validation import sanitize_query
 
 
 # ---------------------------------------------------------------------------
-# Helper: mimics the core search logic from lookup_inventory
+# Helper: mimics the core search logic from lookup_inventory (SQL LIKE)
 # ---------------------------------------------------------------------------
 
-def search_inventory(items: list[InventoryItem], query: str) -> list[InventoryItem]:
+def search_inventory_db(db: sqlite3.Connection, query: str) -> list[dict]:
     """Reproduce the search logic used by the lookup_inventory tool."""
     sanitized = sanitize_query(query)
-    return [
-        item
-        for item in items
-        if sanitized in item.name.lower() or sanitized in item.category.lower()
-    ]
+    like_pattern = f"%{sanitized}%"
+    rows = db.execute(
+        """SELECT item_id, name, category, quantity,
+                  location, status, last_updated
+           FROM inventory
+           WHERE LOWER(name) LIKE ? OR LOWER(category) LIKE ?
+           LIMIT 10""",
+        (like_pattern, like_pattern),
+    ).fetchall()
+    return [dict(row) for row in rows]
 
 
 # ---------------------------------------------------------------------------
@@ -34,27 +41,27 @@ def search_inventory(items: list[InventoryItem], query: str) -> list[InventoryIt
 class TestInventorySearch:
     """Tests for the core inventory search logic."""
 
-    def test_search_by_name(self, sample_inventory: list[InventoryItem]) -> None:
+    def test_search_by_name(self, sample_db: sqlite3.Connection) -> None:
         """Searching by a substring of the item name returns matches."""
-        results = search_inventory(sample_inventory, "Laptop")
+        results = search_inventory_db(sample_db, "Laptop")
         assert len(results) == 1
-        assert results[0].item_id == "INV-001"
+        assert results[0]["item_id"] == "INV-001"
 
-    def test_search_by_category(self, sample_inventory: list[InventoryItem]) -> None:
+    def test_search_by_category(self, sample_db: sqlite3.Connection) -> None:
         """Searching by category returns all items in that category."""
-        results = search_inventory(sample_inventory, "Electronics")
+        results = search_inventory_db(sample_db, "Electronics")
         assert len(results) == 2
-        assert {r.item_id for r in results} == {"INV-001", "INV-003"}
+        assert {r["item_id"] for r in results} == {"INV-001", "INV-003"}
 
-    def test_search_case_insensitive(self, sample_inventory: list[InventoryItem]) -> None:
+    def test_search_case_insensitive(self, sample_db: sqlite3.Connection) -> None:
         """Search is case-insensitive."""
-        results = search_inventory(sample_inventory, "CHAIR")
+        results = search_inventory_db(sample_db, "CHAIR")
         assert len(results) == 1
-        assert results[0].item_id == "INV-002"
+        assert results[0]["item_id"] == "INV-002"
 
-    def test_search_no_results(self, sample_inventory: list[InventoryItem]) -> None:
+    def test_search_no_results(self, sample_db: sqlite3.Connection) -> None:
         """Searching for a non-existent term returns an empty list."""
-        results = search_inventory(sample_inventory, "Printer")
+        results = search_inventory_db(sample_db, "Printer")
         assert len(results) == 0
 
     def test_empty_query_raises_tool_error(self) -> None:
@@ -69,8 +76,8 @@ class TestInventorySearch:
             sanitize_query("   ")
         assert exc_info.value.code == ErrorCode.INVALID_ARGUMENT
 
-    def test_query_with_extra_spaces(self, sample_inventory: list[InventoryItem]) -> None:
+    def test_query_with_extra_spaces(self, sample_db: sqlite3.Connection) -> None:
         """Extra spaces in query are collapsed before matching."""
-        results = search_inventory(sample_inventory, "  office   chair  ")
+        results = search_inventory_db(sample_db, "  office   chair  ")
         assert len(results) == 1
-        assert results[0].item_id == "INV-002"
+        assert results[0]["item_id"] == "INV-002"
