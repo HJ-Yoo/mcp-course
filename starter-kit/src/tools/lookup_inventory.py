@@ -7,7 +7,7 @@ def register(mcp):
         """Search IT inventory by keyword. Returns matching equipment items."""
         # TODO: Get AppContext from ctx
         # TODO: Sanitize query
-        # TODO: Fuzzy search inventory
-        # TODO: Return JSON results
+        # TODO: Build SQL LIKE query and execute on app.db
+        # TODO: Convert rows to JSON with [dict(row) for row in rows]
         # TODO: Add audit logging (Episode 14)
         return "Not implemented yet"

@@ -5,6 +5,7 @@ TODO (Episode 3): Complete the domain models and AppContext.
 from __future__ import annotations
 import csv
 import json
+import sqlite3
 from dataclasses import dataclass, field
 from enum import Enum
 from pathlib import Path
@@ -40,7 +41,7 @@ class InventoryItem:
 
 @dataclass
 class AppContext:
-    inventory: list[InventoryItem]
+    db: sqlite3.Connection
     # TODO (Episode 7): Add policies field
     # TODO (Episode 9): Add tickets_file field
     # TODO (Episode 14): Add audit_log_path field
@@ -50,11 +51,13 @@ class AppContext:
         base = base_dir or Path(__file__).resolve().parent.parent
         data_dir = base / "data"
 
-        inventory = cls._load_inventory(data_dir / "inventory.csv")
+        db = cls._init_db(data_dir / "inventory.csv")
 
-        return cls(inventory=inventory)
+        return cls(db=db)
 
     @staticmethod
-    def _load_inventory(path: Path) -> list[InventoryItem]:
-        # TODO (Episode 5): Implement CSV loading
-        return []
+    def _init_db(csv_path: Path) -> sqlite3.Connection:
+        # TODO (Episode 5): Create in-memory SQLite DB from CSV
+        db = sqlite3.connect(":memory:")
+        db.row_factory = sqlite3.Row
+        return db
