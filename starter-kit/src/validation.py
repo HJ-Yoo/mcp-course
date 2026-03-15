@@ -15,10 +15,6 @@ def validate_text_length(text: str, field_name: str, max_len: int = 500) -> str:
     return text
 
 
-def sanitize_query(query: str) -> str:
-    # TODO: Strip, collapse spaces, lowercase, check non-empty
-    return query
-
 
 def validate_doc_id(doc_id: str) -> str:
     # TODO: Check alphanumeric + hyphens only
