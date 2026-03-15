@@ -1,246 +1,248 @@
 ---
-title: Information Security Policy
-tags: [security, password, mfa, data, compliance]
+title: 정보보안 정책
+tags: [보안, 비밀번호, 인증, 데이터, 컴플라이언스]
+last_updated: 2026-02-01
+author: IT보안팀
 ---
 
-# Information Security Policy
+# 정보보안 정책
 
-**Effective Date:** January 1, 2026
-**Last Revised:** February 1, 2026
-**Policy Owner:** Chief Information Security Officer (CISO), IT Security Team
-**Applies To:** All employees, contractors, vendors, and third parties with access to Acme Corp systems
-
----
-
-## 1. Purpose
-
-This policy defines the security requirements and controls that protect Acme Corp's information assets, systems, and data. All personnel with access to company systems are responsible for understanding and complying with this policy. Violations may result in disciplinary action, up to and including termination and legal proceedings.
+**시행일:** 2026년 1월 1일
+**최종 개정일:** 2026년 2월 1일
+**정책 소관:** 최고정보보호책임자(CISO), IT 보안팀
+**적용 대상:** 메타코드 시스템에 접근하는 모든 임직원, 계약직, 협력업체 및 제3자
 
 ---
 
-## 2. Password Requirements
+## 1. 목적
 
-2.1. **Minimum Length:** All passwords must be at least **14 characters** long.
-
-2.2. **Complexity Rules:** Passwords must contain at least three of the following four character types:
-   - Uppercase letters (A-Z)
-   - Lowercase letters (a-z)
-   - Numbers (0-9)
-   - Special characters (!@#$%^&*()-_=+[]{}|;:',.<>?/)
-
-2.3. **Password Rotation:** Passwords must be changed every **90 days**. The system will prompt you 14 days before expiration. Passwords cannot be reused within the last 12 password cycles.
-
-2.4. **Prohibited Passwords:** The following are not permitted:
-   - Dictionary words or common phrases
-   - Personal information (name, birthday, employee ID)
-   - Sequential or repeated characters (e.g., "aaaaaa", "123456")
-   - Passwords found in known breach databases (checked automatically)
-
-2.5. **Password Manager:** All employees are required to use **1Password** (company-provided) to generate and store passwords. Storing passwords in browsers, sticky notes, text files, or spreadsheets is strictly prohibited.
-
-2.6. **Shared Accounts:** Shared or generic accounts are prohibited. Every individual must use their own uniquely identified account for all system access.
+본 정책은 메타코드의 정보자산, 시스템 및 데이터를 보호하기 위한 보안 요구사항과 통제 방안을 정의합니다. 회사 시스템에 접근하는 모든 인원은 본 정책을 숙지하고 준수할 책임이 있습니다. 정책 위반 시 경고, 인사 조치, 해고를 포함한 징계 처분 및 법적 조치가 취해질 수 있습니다.
 
 ---
 
-## 3. Multi-Factor Authentication (MFA)
+## 2. 비밀번호 요구사항
 
-3.1. **Mandatory MFA:** Multi-factor authentication is required for all Acme Corp systems, including:
-   - Okta SSO (primary identity provider)
-   - Email (Google Workspace)
-   - VPN access
+2.1. **최소 길이:** 모든 비밀번호는 최소 **14자** 이상이어야 합니다.
+
+2.2. **복잡성 규칙:** 비밀번호는 다음 네 가지 문자 유형 중 최소 세 가지 이상을 포함해야 합니다:
+   - 영문 대문자 (A-Z)
+   - 영문 소문자 (a-z)
+   - 숫자 (0-9)
+   - 특수문자 (!@#$%^&*()-_=+[]{}|;:',.<>?/)
+
+2.3. **비밀번호 변경 주기:** 비밀번호는 **90일**마다 변경해야 합니다. 만료 14일 전부터 시스템에서 변경 알림이 표시됩니다. 최근 12회 이내에 사용한 비밀번호는 재사용할 수 없습니다.
+
+2.4. **사용 금지 비밀번호:** 다음 유형의 비밀번호는 사용이 금지됩니다:
+   - 사전에 등재된 단어 또는 일반적인 문구
+   - 개인정보 (이름, 생년월일, 사번 등)
+   - 연속 또는 반복 문자 (예: "aaaaaa", "123456")
+   - 알려진 유출 데이터베이스에 포함된 비밀번호 (자동 검증 수행)
+
+2.5. **비밀번호 관리자:** 모든 임직원은 회사에서 제공하는 **1Password**를 사용하여 비밀번호를 생성하고 저장해야 합니다. 브라우저, 메모지, 텍스트 파일, 스프레드시트 등에 비밀번호를 저장하는 행위는 엄격히 금지됩니다.
+
+2.6. **공용 계정 금지:** 공용 또는 범용 계정의 사용은 금지됩니다. 모든 인원은 시스템 접근 시 본인에게 고유하게 부여된 개인 계정만을 사용해야 합니다.
+
+---
+
+## 3. 다중 인증(MFA)
+
+3.1. **MFA 필수 적용:** 다음을 포함한 모든 메타코드 시스템에 다중 인증이 필수 적용됩니다:
+   - Okta SSO (주 인증 시스템)
+   - 이메일 (Google Workspace)
+   - VPN 접속
    - GitHub
-   - AWS Console and CLI
-   - Jira, Confluence, and other Atlassian products
-   - Slack (when accessing from a new device)
-   - Any system containing Confidential or Restricted data
+   - AWS 콘솔 및 CLI
+   - Jira, Confluence 등 Atlassian 제품
+   - Slack (신규 기기에서 접속 시)
+   - 기밀 또는 제한 등급 데이터가 포함된 모든 시스템
 
-3.2. **Preferred Method:** **Hardware security keys** (YubiKey 5 series) are the preferred MFA method and are required for all employees with access to production systems or Restricted data. IT will provide up to 2 YubiKeys per employee (primary and backup).
+3.2. **권장 인증 수단:** **하드웨어 보안키**(YubiKey 5 시리즈)가 가장 권장되는 MFA 수단이며, 프로덕션 시스템 또는 제한 등급 데이터에 접근하는 모든 임직원에게 필수입니다. IT 부서에서 1인당 최대 2개의 YubiKey(주 사용 및 백업)를 제공합니다.
 
-3.3. **Acceptable Methods:** In order of preference:
-   1. Hardware security key (YubiKey) — **required for engineering, IT, finance**
-   2. Okta Verify push notification
-   3. TOTP authenticator app (1Password, Google Authenticator)
-   4. SMS-based OTP — **not permitted** (vulnerable to SIM swapping)
+3.3. **허용 인증 수단:** 우선순위에 따라:
+   1. 하드웨어 보안키 (YubiKey) -- **개발, IT, 재무 부서 필수**
+   2. Okta Verify 푸시 알림
+   3. TOTP 인증 앱 (1Password, Google Authenticator)
+   4. SMS 기반 OTP -- **사용 불가** (SIM 스와핑 공격에 취약)
 
-3.4. **Recovery:** If an employee loses their hardware key, they must report it to IT Security immediately via Slack #security-incidents or email security@acmecorp.com. A temporary bypass will be issued (valid 24 hours) while a replacement key is provisioned.
-
----
-
-## 4. Device Security
-
-4.1. **Full Disk Encryption:** All devices used to access Acme Corp systems must have full disk encryption enabled:
-   - **macOS:** FileVault must be enabled and verified via Jamf
-   - **Windows:** BitLocker must be enabled with TPM
-   - **Linux:** LUKS full disk encryption required
-
-4.2. **Automatic Screen Lock:** Devices must lock automatically after **5 minutes** of inactivity. Manual locking (Cmd+Ctrl+Q on macOS, Win+L on Windows) should be used whenever stepping away.
-
-4.3. **Operating System Updates:** Security patches must be applied within **72 hours** of release for critical vulnerabilities and within **14 days** for all other updates. IT manages patch deployment through Jamf (macOS) and Intune (Windows).
-
-4.4. **Antivirus & Endpoint Protection:** All company devices must run the approved endpoint protection software:
-   - **CrowdStrike Falcon** is deployed on all managed devices
-   - Tamper protection must remain enabled
-   - Real-time scanning must be active at all times
-
-4.5. **Mobile Devices:** Personal mobile devices accessing company email or Slack must have:
-   - Screen lock with biometric or 6+ digit PIN
-   - Latest OS version (within one major version)
-   - Remote wipe capability via Okta MDM enrollment
+3.4. **분실 시 대응:** 하드웨어 보안키를 분실한 경우, 즉시 Slack #보안사고 채널 또는 이메일 security@metacode.co.kr로 IT 보안팀에 신고해야 합니다. 대체 보안키가 발급되는 동안 24시간 유효한 임시 우회 코드가 발급됩니다.
 
 ---
 
-## 5. Data Classification
+## 4. 기기 보안
 
-5.1. All data at Acme Corp is classified into four levels:
+4.1. **전체 디스크 암호화:** 메타코드 시스템에 접근하는 모든 기기는 전체 디스크 암호화가 활성화되어 있어야 합니다:
+   - **macOS:** FileVault 활성화 및 Jamf를 통한 확인 필수
+   - **Windows:** TPM 기반 BitLocker 활성화 필수
+   - **Linux:** LUKS 전체 디스크 암호화 필수
 
-| Classification | Description | Examples | Handling |
+4.2. **자동 화면 잠금:** 모든 기기는 **5분** 비활성 시 자동으로 화면이 잠기도록 설정해야 합니다. 자리를 비울 때는 수동 잠금(macOS: Cmd+Ctrl+Q, Windows: Win+L)을 습관적으로 사용해야 합니다.
+
+4.3. **운영체제 업데이트:** 심각한 보안 취약점에 대한 패치는 공개 후 **72시간** 이내에, 그 외 모든 업데이트는 **14일** 이내에 적용해야 합니다. IT 부서에서 Jamf(macOS) 및 Intune(Windows)을 통해 패치 배포를 관리합니다.
+
+4.4. **안티바이러스 및 엔드포인트 보호:** 모든 회사 기기에는 승인된 엔드포인트 보호 소프트웨어가 설치되어 있어야 합니다:
+   - **CrowdStrike Falcon**이 모든 관리 기기에 배포됩니다
+   - 변조 방지(Tamper Protection) 기능을 항상 활성화 상태로 유지해야 합니다
+   - 실시간 검사 기능을 항상 활성화해야 합니다
+
+4.5. **모바일 기기:** 회사 이메일 또는 Slack에 접속하는 개인 모바일 기기는 다음 조건을 충족해야 합니다:
+   - 생체인식 또는 6자리 이상 PIN을 통한 화면 잠금 설정
+   - 최신 OS 버전 유지 (주요 버전 기준 1단계 이내)
+   - Okta MDM 등록을 통한 원격 삭제(Remote Wipe) 기능 활성화
+
+---
+
+## 5. 데이터 분류
+
+5.1. 메타코드의 모든 데이터는 다음 네 가지 등급으로 분류됩니다:
+
+| 분류 등급 | 설명 | 예시 | 취급 방법 |
 |---|---|---|---|
-| **Public** | Information intended for public consumption | Marketing materials, blog posts, press releases | No restrictions |
-| **Internal** | General business information not intended for external sharing | Meeting notes, internal announcements, org charts | Do not share externally; no special encryption required |
-| **Confidential** | Sensitive business information whose disclosure could harm the company | Financial reports, product roadmaps, customer lists, source code | Encrypted storage and transmission; need-to-know access; NDA required for external sharing |
-| **Restricted** | Highly sensitive data subject to regulatory or legal requirements | PII, PHI, payment card data, trade secrets, security credentials | Encrypted at rest and in transit; strict access controls; audit logging; DLP monitoring |
+| **공개** | 외부 공개를 목적으로 하는 정보 | 마케팅 자료, 블로그 게시물, 보도자료 | 별도 제한 없음 |
+| **내부** | 외부 공유를 의도하지 않은 일반 업무 정보 | 회의록, 사내 공지, 조직도 | 외부 공유 금지; 별도 암호화 불필요 |
+| **기밀** | 유출 시 회사에 피해를 줄 수 있는 민감한 업무 정보 | 재무 보고서, 제품 로드맵, 고객 목록, 소스 코드 | 저장 및 전송 시 암호화; 알 필요성(Need-to-Know) 기반 접근 통제; 외부 공유 시 NDA 필수 |
+| **제한** | 법적 또는 규제 요건이 적용되는 고도로 민감한 데이터 | 개인식별정보(PII), 건강정보(PHI), 결제카드 정보, 영업비밀, 보안 인증정보 | 저장 및 전송 시 암호화; 엄격한 접근 통제; 감사 로그 기록; DLP 모니터링 |
 
-5.2. **Default Classification:** All data is classified as **Internal** unless explicitly marked otherwise. Employees should err on the side of higher classification when uncertain.
+5.2. **기본 분류 등급:** 별도로 명시하지 않은 모든 데이터는 **내부** 등급으로 분류됩니다. 분류가 불확실한 경우, 더 높은 등급으로 분류하는 것을 원칙으로 합니다.
 
-5.3. **Labeling:** Documents containing Confidential or Restricted data must be labeled in the header or footer. Digital files should include the classification in the filename or metadata.
-
----
-
-## 6. Clean Desk Policy
-
-6.1. **End of Day:** At the end of each workday (or when leaving for an extended period), employees must:
-   - Lock their computer screen
-   - Store all printed documents containing Internal, Confidential, or Restricted information in a locked drawer or cabinet
-   - Remove all sticky notes containing passwords, PINs, or access codes (these should not exist per Section 2.5)
-   - Clear whiteboards of any sensitive information
-
-6.2. **Shared Spaces:** Meeting rooms and shared workspaces must be cleared of all documents and notes at the conclusion of each meeting. Use the shred bins located on each floor for sensitive paper disposal.
-
-6.3. **Printing:** Use "secure print" (pull printing) for all documents containing Confidential or Restricted data. Documents left uncollected at the printer for more than 1 hour will be automatically shredded by facilities staff.
+5.3. **라벨링:** 기밀 또는 제한 등급 데이터가 포함된 문서에는 머리글 또는 바닥글에 분류 등급을 표시해야 합니다. 디지털 파일의 경우 파일명 또는 메타데이터에 분류 등급을 포함해야 합니다.
 
 ---
 
-## 7. Incident Reporting
+## 6. 클린 데스크 정책
 
-7.1. **Reporting Timeline:** All security incidents must be reported **within 1 hour** of discovery. Failure to report a known security incident is itself a policy violation.
+6.1. **퇴근 시:** 매일 업무 종료 시(또는 장시간 자리를 비울 때) 임직원은 다음 사항을 준수해야 합니다:
+   - 컴퓨터 화면 잠금
+   - 내부, 기밀 또는 제한 등급 정보가 포함된 모든 인쇄물을 시건장치가 있는 서랍 또는 캐비닛에 보관
+   - 비밀번호, PIN, 접근 코드가 적힌 메모지 제거 (2.5항에 따라 이러한 메모는 존재해서는 안 됨)
+   - 화이트보드의 민감한 정보 삭제
 
-7.2. **What to Report:**
-   - Suspected phishing emails or social engineering attempts
-   - Lost or stolen devices (laptops, phones, security keys)
-   - Unauthorized access to systems or data
-   - Malware or suspicious software behavior
-   - Accidental data exposure or misdirected emails
-   - Physical security breaches (tailgating, unauthorized visitors)
+6.2. **공용 공간:** 회의실 및 공용 업무 공간에서는 회의 종료 시 모든 문서와 메모를 정리해야 합니다. 민감한 종이 문서의 폐기는 각 층에 비치된 문서 파쇄함을 이용하십시오.
 
-7.3. **How to Report:**
-   - **Immediate:** Slack #security-incidents (24/7 monitored by Security Operations)
-   - **Email:** security@acmecorp.com
-   - **Phone:** +1 (555) 012-3456 (Security Operations Center)
-   - **Phishing:** Forward suspicious emails to phishing@acmecorp.com using the "Report Phishing" button in Gmail
-
-7.4. **No Retaliation:** Acme Corp has a strict no-retaliation policy for good-faith security incident reports. Employees will never be penalized for reporting potential incidents, even if the report turns out to be a false alarm.
+6.3. **인쇄:** 기밀 또는 제한 등급 데이터가 포함된 모든 문서는 "보안 인쇄"(풀 프린팅) 기능을 사용해야 합니다. 프린터에서 1시간 이상 수령하지 않은 인쇄물은 시설관리팀에 의해 자동으로 파쇄됩니다.
 
 ---
 
-## 8. Acceptable Use
+## 7. 보안 사고 보고
 
-8.1. **Business Use:** Company devices, networks, and systems are provided primarily for business use. Limited personal use is permitted provided it does not:
-   - Interfere with job responsibilities
-   - Violate any law or regulation
-   - Compromise system security
-   - Consume excessive network bandwidth
+7.1. **보고 시한:** 모든 보안 사고는 인지 후 **1시간 이내**에 보고해야 합니다. 알려진 보안 사고를 보고하지 않는 것 자체가 정책 위반에 해당합니다.
 
-8.2. **Prohibited Activities:**
-   - Installing unauthorized software or browser extensions
-   - Disabling security controls (antivirus, firewall, encryption)
-   - Sharing credentials with any other person, including IT staff
-   - Accessing or storing illegal content
-   - Using company resources for cryptocurrency mining
-   - Connecting unauthorized devices to the corporate network
-   - Using personal cloud storage (Dropbox, personal Google Drive) for company data
+7.2. **보고 대상:**
+   - 피싱 이메일 또는 사회공학적 공격이 의심되는 경우
+   - 기기(노트북, 휴대폰, 보안키) 분실 또는 도난
+   - 시스템 또는 데이터에 대한 비인가 접근
+   - 악성코드 또는 의심스러운 소프트웨어 동작
+   - 우발적인 데이터 노출 또는 이메일 오발송
+   - 물리적 보안 침해 (무단 출입, 비인가 방문자 등)
 
-8.3. **Monitoring:** Acme Corp reserves the right to monitor all activity on company-owned devices and networks. This includes email, web browsing, file access, and application usage. Monitoring is conducted in compliance with applicable laws.
+7.3. **보고 방법:**
+   - **즉시 보고:** Slack #보안사고 (보안운영팀 24시간 모니터링)
+   - **이메일:** security@metacode.co.kr
+   - **전화:** 02-1234-5678 (보안운영센터)
+   - **피싱 신고:** 의심스러운 이메일을 Gmail의 "피싱 신고" 버튼을 사용하여 phishing@metacode.co.kr로 전달
 
----
-
-## 9. BYOD (Bring Your Own Device)
-
-9.1. **Permitted Use:** Personal devices may be used to access company email and Slack only after enrollment in Okta MDM and completion of the BYOD agreement form.
-
-9.2. **Requirements for BYOD:**
-   - Device must meet minimum OS version requirements
-   - Screen lock must be enabled (biometric or 6+ digit PIN)
-   - Device encryption must be enabled
-   - Remote wipe consent must be signed
-   - Company data must be stored in managed apps only (no copying to personal apps)
-
-9.3. **Separation of Data:** BYOD devices use containerized access through Okta. Company data is isolated in a managed container that can be selectively wiped without affecting personal data.
-
-9.4. **Lost/Stolen BYOD:** Personal devices with company access that are lost or stolen must be reported within 1 hour. IT will initiate a selective wipe of the managed container.
+7.4. **보복 금지:** 메타코드는 선의의 보안 사고 보고에 대한 엄격한 보복 금지 정책을 시행합니다. 보고가 오보로 판명되더라도, 보고자에게 어떠한 불이익도 부과하지 않습니다.
 
 ---
 
-## 10. Phishing & Security Awareness Training
+## 8. 사용 규정
 
-10.1. **Quarterly Training:** All employees must complete security awareness training every quarter. Training is delivered through KnowBe4 and covers:
-   - Phishing identification and reporting
-   - Social engineering tactics
-   - Password hygiene
-   - Data handling procedures
-   - Physical security
+8.1. **업무 사용 원칙:** 회사의 기기, 네트워크 및 시스템은 업무 목적으로 제공됩니다. 다음 조건을 준수하는 범위 내에서 제한적인 개인 사용이 허용됩니다:
+   - 업무 수행에 지장을 주지 않을 것
+   - 법률 또는 규정을 위반하지 않을 것
+   - 시스템 보안을 저해하지 않을 것
+   - 과도한 네트워크 대역폭을 소비하지 않을 것
 
-10.2. **Phishing Simulations:** IT Security conducts monthly phishing simulations. Employees who click on simulated phishing links will be enrolled in additional targeted training.
+8.2. **금지 행위:**
+   - 승인되지 않은 소프트웨어 또는 브라우저 확장 프로그램 설치
+   - 보안 통제(안티바이러스, 방화벽, 암호화) 비활성화
+   - IT 직원을 포함한 타인과의 인증정보 공유
+   - 불법 콘텐츠 접근 또는 저장
+   - 회사 자원을 이용한 암호화폐 채굴
+   - 비인가 기기의 사내 네트워크 연결
+   - 개인 클라우드 스토리지(Dropbox, 개인 Google Drive 등)에 회사 데이터 저장
 
-10.3. **Completion Deadline:** Training must be completed within 14 days of assignment. Non-completion will result in a reminder from HR, followed by restricted system access after 30 days.
-
----
-
-## 11. Vendor & Third-Party Access
-
-11.1. **Access Requests:** All vendor and third-party access must be requested through the IT Service Portal and approved by both the requesting manager and IT Security.
-
-11.2. **Principle of Least Privilege:** Vendors receive the minimum access necessary to perform their contracted work. Access is time-limited and expires automatically.
-
-11.3. **NDA Requirement:** All vendors must sign a Non-Disclosure Agreement before receiving access to any Internal, Confidential, or Restricted data.
-
-11.4. **Audit:** Vendor access is reviewed monthly by IT Security. Access for completed engagements is revoked within 24 hours of contract end.
+8.3. **모니터링:** 메타코드는 회사 소유 기기 및 네트워크에서 이루어지는 모든 활동을 모니터링할 수 있는 권한을 보유합니다. 이메일, 웹 브라우징, 파일 접근, 애플리케이션 사용 등이 모니터링 대상에 포함되며, 관련 법령을 준수하여 수행됩니다.
 
 ---
 
-## 12. Network Security
+## 9. BYOD (개인 기기 사용) 정책
 
-12.1. **VPN Required:** All remote access to internal systems must go through the Acme Corp VPN. See the VPN Setup & Usage Guide (policy://vpn-guide) for details.
+9.1. **허용 범위:** 개인 기기는 Okta MDM 등록 및 BYOD 동의서 작성을 완료한 후에만 회사 이메일 및 Slack 접속에 사용할 수 있습니다.
 
-12.2. **Network Segmentation:** The corporate network is segmented into zones:
-   - **Corporate:** General employee access
-   - **Engineering:** Development and staging environments
-   - **Production:** Production infrastructure (restricted access)
-   - **Guest:** Isolated guest Wi-Fi (no internal access)
+9.2. **BYOD 요구사항:**
+   - 최소 OS 버전 요구사항 충족
+   - 화면 잠금 설정 (생체인식 또는 6자리 이상 PIN)
+   - 기기 암호화 활성화
+   - 원격 삭제(Remote Wipe) 동의서 서명
+   - 회사 데이터는 관리형 앱에만 저장 (개인 앱으로 복사 금지)
 
-12.3. **Wireless Security:** Corporate Wi-Fi uses WPA3-Enterprise with certificate-based authentication through Okta. The guest network uses a rotating password changed weekly.
+9.3. **데이터 분리:** BYOD 기기는 Okta를 통한 컨테이너화된 접근을 사용합니다. 회사 데이터는 관리형 컨테이너 내에 격리되며, 개인 데이터에 영향을 주지 않고 선택적으로 삭제할 수 있습니다.
 
----
-
-## 13. Compliance & Enforcement
-
-13.1. **Compliance Monitoring:** IT Security conducts regular compliance audits using automated tools and manual reviews. Non-compliant devices may have network access restricted until remediation is complete.
-
-13.2. **Violations:** Violations of this policy are taken seriously and may result in:
-   - First offense: Written warning and mandatory remedial training
-   - Second offense: Temporary suspension of system access and formal HR action
-   - Severe violations: Immediate termination and potential legal action
-
-13.3. **Annual Review:** This policy is reviewed annually by the CISO and updated as needed to reflect evolving threats and regulatory requirements.
+9.4. **BYOD 기기 분실/도난:** 회사 접근 권한이 있는 개인 기기가 분실 또는 도난된 경우, 1시간 이내에 신고해야 합니다. IT 부서에서 관리형 컨테이너에 대한 선택적 삭제를 수행합니다.
 
 ---
 
-## 14. Contact
+## 10. 보안 교육
 
-- **IT Security Team:** security@acmecorp.com
-- **Security Incidents (24/7):** Slack #security-incidents or +1 (555) 012-3456
-- **Phishing Reports:** phishing@acmecorp.com
-- **IT Help Desk:** it-support@acmecorp.com or Slack #it-helpdesk
+10.1. **분기별 교육:** 모든 임직원은 분기마다 보안 인식 교육을 이수해야 합니다. 교육은 KnowBe4 플랫폼을 통해 제공되며, 다음 내용을 포함합니다:
+   - 피싱 식별 및 신고 방법
+   - 사회공학적 공격 수법
+   - 비밀번호 관리 수칙
+   - 데이터 취급 절차
+   - 물리적 보안
+
+10.2. **피싱 시뮬레이션:** IT 보안팀은 매월 피싱 시뮬레이션을 실시합니다. 시뮬레이션 피싱 링크를 클릭한 임직원은 추가 맞춤형 교육에 등록됩니다.
+
+10.3. **이수 기한:** 교육은 배정일로부터 14일 이내에 이수해야 합니다. 미이수 시 인사팀에서 재촉 안내를 발송하며, 30일 경과 후에도 미이수 시 시스템 접근이 제한됩니다.
 
 ---
 
-*All employees must acknowledge this policy annually through the compliance portal in Workday. Last acknowledgment cycle completed: January 2026.*
+## 11. 외부 업체 접근 관리
+
+11.1. **접근 요청:** 모든 외부 업체 및 제3자의 접근은 IT 서비스 포털을 통해 요청해야 하며, 요청 부서 관리자와 IT 보안팀의 승인이 필요합니다.
+
+11.2. **최소 권한 원칙:** 외부 업체에는 계약 업무 수행에 필요한 최소한의 접근 권한만 부여됩니다. 접근 권한은 기간이 한정되며 자동으로 만료됩니다.
+
+11.3. **비밀유지계약(NDA) 필수:** 모든 외부 업체는 내부, 기밀 또는 제한 등급 데이터에 접근하기 전에 비밀유지계약(NDA)에 서명해야 합니다.
+
+11.4. **감사:** 외부 업체의 접근 권한은 IT 보안팀에서 매월 점검합니다. 계약 종료된 업체의 접근 권한은 계약 만료 후 24시간 이내에 회수됩니다.
+
+---
+
+## 12. 네트워크 보안
+
+12.1. **VPN 필수:** 내부 시스템에 대한 모든 원격 접속은 메타코드 VPN을 통해야 합니다. 자세한 내용은 VPN 설정 및 사용 가이드(policy://vpn-guide)를 참조하십시오.
+
+12.2. **네트워크 분리:** 사내 네트워크는 다음과 같은 구역으로 분리되어 있습니다:
+   - **업무망:** 일반 임직원 접속용
+   - **개발망:** 개발 및 스테이징 환경
+   - **운영망:** 프로덕션 인프라 (접근 제한)
+   - **게스트망:** 격리된 게스트 Wi-Fi (내부 접근 불가)
+
+12.3. **무선 네트워크 보안:** 사내 Wi-Fi는 Okta를 통한 인증서 기반 인증과 함께 WPA3-Enterprise를 사용합니다. 게스트 네트워크는 매주 변경되는 비밀번호를 사용합니다.
+
+---
+
+## 13. 규정 준수 및 제재
+
+13.1. **규정 준수 모니터링:** IT 보안팀은 자동화 도구 및 수동 점검을 통해 정기적으로 규정 준수 감사를 실시합니다. 규정을 준수하지 않는 기기는 시정 조치가 완료될 때까지 네트워크 접근이 제한될 수 있습니다.
+
+13.2. **위반 시 조치:** 본 정책의 위반은 엄중하게 다루어지며, 다음과 같은 조치가 취해질 수 있습니다:
+   - 1차 위반: 서면 경고 및 의무 보수 교육
+   - 2차 위반: 시스템 접근 일시 정지 및 공식 인사 조치
+   - 중대 위반: 즉시 해고 및 법적 조치 가능
+
+13.3. **연례 검토:** 본 정책은 CISO에 의해 매년 검토되며, 변화하는 위협 환경과 규제 요건을 반영하여 필요 시 개정됩니다.
+
+---
+
+## 14. 연락처
+
+- **IT 보안팀:** security@metacode.co.kr
+- **보안 사고 신고 (24시간):** Slack #보안사고 또는 02-1234-5678
+- **피싱 신고:** phishing@metacode.co.kr
+- **IT 헬프데스크:** it-support@metacode.co.kr 또는 Slack #IT도움말
+
+---
+
+*모든 임직원은 매년 사내 컴플라이언스 포털을 통해 본 정책에 대한 확인 서명을 완료해야 합니다. 최근 확인 서명 주기 완료: 2026년 1월.*
