@@ -1,159 +1,161 @@
 ---
-title: Remote Work Policy
-tags: [remote, wfh, flexible, telecommute]
+title: 재택근무 정책
+tags: [재택근무, 근무제도, 복리후생]
+last_updated: 2026-02-01
+author: 인사팀
 ---
 
-# Remote Work Policy
+# 재택근무 정책
 
-**Effective Date:** January 1, 2026
-**Last Revised:** January 15, 2026
-**Policy Owner:** Human Resources, in partnership with IT Operations
-**Applies To:** All full-time and part-time employees of Acme Corp
-
----
-
-## 1. Purpose
-
-This policy establishes guidelines and expectations for employees who work remotely, whether on a regular hybrid schedule or on an occasional basis. Acme Corp recognizes that flexible work arrangements can improve employee satisfaction, reduce commute times, and support business continuity, while maintaining the collaboration and productivity standards that drive our success.
+**시행일:** 2026년 1월 1일
+**최종 수정일:** 2026년 2월 1일
+**정책 소관:** 인사팀 (IT운영팀 협조)
+**적용 대상:** 메타코드 주식회사 전 직원
 
 ---
 
-## 2. Eligibility
+## 1. 목적
 
-2.1. **Probationary Period:** Employees must complete a minimum of 90 calendar days of employment before becoming eligible for remote work. During the probationary period, employees are expected to work on-site full-time to facilitate onboarding, training, and team integration.
-
-2.2. **Role Suitability:** Not all roles are eligible for remote work. Positions that require physical presence (e.g., facilities maintenance, on-site IT support, front desk reception) are excluded. Managers will designate which roles on their team are remote-eligible.
-
-2.3. **Performance Standing:** Employees must be in good standing with no active performance improvement plans (PIPs). Remote work privileges may be revoked if performance falls below expectations.
-
-2.4. **Manager Approval:** All remote work arrangements require written approval from the employee's direct manager and department head. Approval is documented in Workday under the employee's profile.
+본 정책은 재택근무를 수행하는 직원에 대한 가이드라인과 기대사항을 규정합니다. 메타코드는 유연한 근무 환경이 직원 만족도를 높이고, 출퇴근 부담을 줄이며, 업무 연속성을 지원할 수 있다고 인식하고 있습니다. 동시에 팀 협업과 생산성 기준을 유지하는 것을 목표로 합니다.
 
 ---
 
-## 3. Schedule & Availability
+## 2. 대상
 
-3.1. **Hybrid Schedule:** Eligible employees may work remotely up to 3 days per week. The specific remote days must be agreed upon with the employee's manager and should remain consistent week-to-week to support team coordination.
+2.1. **정규직 전 직원** (수습 기간 제외): 수습 기간(입사 후 90일) 동안은 온보딩, 교육 및 팀 적응을 위해 전일 출근을 원칙으로 합니다.
 
-3.2. **Core Hours:** Regardless of location, all employees must be available and responsive during core hours: **9:00 AM to 5:00 PM Eastern Time**, Monday through Friday. Employees in other time zones must adjust accordingly or negotiate alternative core hours with their manager.
+2.2. **직무 적합성:** 물리적 출근이 필수인 직무(시설 관리, 현장 IT 지원, 안내 데스크 등)는 재택근무 대상에서 제외됩니다. 각 부서장이 재택근무 가능 직무를 지정합니다.
 
-3.3. **Slack Status:** Employees working remotely must keep their Slack status updated to reflect their availability. Use the "Working Remotely" status with the house emoji. Set yourself to "Away" during breaks exceeding 15 minutes.
+2.3. **성과 기준:** 성과개선계획(PIP) 대상이 아닌 양호한 성과 상태의 직원에 한합니다. 성과가 기준에 미달할 경우 재택근무 권한이 취소될 수 있습니다.
 
-3.4. **Response Time:** Remote employees are expected to respond to Slack messages within 15 minutes during core hours. Email responses should be provided within 2 hours.
-
-3.5. **Calendar Visibility:** Keep your Google Calendar up to date with meetings, focus blocks, and out-of-office time. All calendar events should reflect your actual availability.
+2.4. **부서장 승인 필요:** 모든 재택근무 신청은 직속 상사 및 부서장의 서면 승인이 필요합니다. 승인 내역은 사내 HR 시스템에 기록됩니다.
 
 ---
 
-## 4. Equipment & Home Office Setup
+## 3. 근무 규칙
 
-4.1. **Company-Provided Equipment:** Acme Corp will provide the following equipment for remote work:
-   - Laptop (MacBook Pro or Dell Latitude, based on role)
-   - External monitor (upon request, subject to inventory availability)
-   - Keyboard and mouse (upon request)
-   - Headset for video calls
+3.1. **하이브리드 근무:** 주 3일 출근 / 2일 재택을 기본으로 합니다. 구체적인 재택 요일은 상사와 협의하여 정하며, 팀 운영을 위해 매주 일정하게 유지해야 합니다.
 
-4.2. **Home Office Stipend:** Eligible remote employees receive a one-time **$1,500 home office stipend** to set up an ergonomic workspace. This stipend may be used for:
-   - Desk and ergonomic chair
-   - Desk lamp and lighting
-   - Cable management and accessories
-   - Monitor arms or laptop stands
-   - Noise-canceling enhancements
+3.2. **코어 타임:** 근무 장소에 관계없이 **10:00 - 16:00** 사이에는 반드시 연락 가능한 상태를 유지해야 합니다. 코어 타임 중에는 메시지 및 요청에 신속하게 응답해야 합니다.
 
-   The stipend is disbursed upon remote work approval and is taxable income. Receipts must be submitted through Concur within 60 days of purchase.
+3.3. **상태 표시:** 재택근무 시 사내 메신저(Slack 등)의 상태를 "재택근무"로 설정합니다. 15분 이상 자리를 비울 경우 "자리비움"으로 변경합니다.
 
-4.3. **Internet Reimbursement:** Remote employees receive a monthly **$75 internet reimbursement** to offset home internet costs. This is processed automatically through payroll and appears as a separate line item on your pay stub. A minimum internet speed of 50 Mbps download / 10 Mbps upload is required.
+3.4. **응답 시간:** 재택근무 중 코어 타임 내 메신저 메시지에는 15분 이내, 이메일에는 2시간 이내 응답을 원칙으로 합니다.
 
-4.4. **Equipment Return:** All company-provided equipment must be returned within 5 business days of employment termination or revocation of remote work privileges. Shipping labels will be provided by IT.
+3.5. **일정 관리:** 사내 캘린더에 회의, 집중 업무 시간, 부재 일정을 정확하게 반영하여 실제 가용 상태를 공유합니다.
 
 ---
 
-## 5. Workspace Requirements
+## 4. 장비 및 재택 환경
 
-5.1. **Dedicated Workspace:** Remote employees must maintain a dedicated, private workspace that is free from distractions and suitable for video calls. Shared common areas (e.g., coffee shops, libraries) should not be the primary remote work location.
+4.1. **회사 제공 장비:** 메타코드는 재택근무를 위해 다음 장비를 지급합니다:
+   - 노트북 (MacBook 또는 회사 지정 모델)
+   - 모니터 1대 (회사 제공, 재고 상황에 따라 배정)
+   - 키보드 및 마우스 (신청 시)
+   - 화상회의용 헤드셋
 
-5.2. **Ergonomic Setup:** Employees are encouraged to set up their workspace following ergonomic best practices. The HR team offers virtual ergonomic assessments upon request.
+4.2. **재택근무 환경 지원금:** 재택근무 승인 시 1회성 **50만원 환경 조성 지원금**을 지급합니다. 사용 가능 항목:
+   - 책상 및 인체공학 의자
+   - 조명 기구
+   - 케이블 정리 및 액세서리
+   - 모니터 암 또는 노트북 거치대
+   - 소음 차단 용품
 
-5.3. **Background & Noise:** During video calls, employees should use a professional background (real or virtual) and minimize background noise. Use the mute button when not speaking in meetings with more than 3 participants.
+   지원금은 재택근무 승인 후 지급되며, 구매 영수증을 60일 이내에 경비 시스템에 제출해야 합니다.
 
----
+4.3. **인터넷 비용 지원:** 재택근무 직원에게는 월 **5만원**의 인터넷 비용을 지원합니다. 급여에 별도 항목으로 자동 반영됩니다. 최소 인터넷 속도 요건: 다운로드 50Mbps / 업로드 10Mbps 이상
 
-## 6. Security & Compliance
-
-6.1. **VPN Mandatory:** All remote employees must connect to the Acme Corp VPN before accessing any internal systems, including email, Slack, Jira, Confluence, and internal dashboards. See the VPN Setup & Usage Guide (policy://vpn-guide) for setup instructions.
-
-6.2. **Device Security:** All devices used for work must comply with the Information Security Policy (policy://security-policy):
-   - Full disk encryption enabled (FileVault for macOS, BitLocker for Windows)
-   - Automatic screen lock after 5 minutes of inactivity
-   - Up-to-date operating system and security patches
-   - Company-approved antivirus software installed and active
-
-6.3. **Confidential Information:** Employees must not access or display confidential or restricted information in public spaces. Screen privacy filters are recommended for travel or coworking scenarios.
-
-6.4. **Wi-Fi Security:** Employees must use a secured, password-protected Wi-Fi network. Public Wi-Fi networks (hotels, airports, coffee shops) may only be used with an active VPN connection.
+4.4. **장비 반납:** 퇴사 또는 재택근무 권한 취소 시 회사 지급 장비는 **영업일 5일 이내** 반납해야 합니다. IT팀에서 반납 안내 및 택배 라벨을 제공합니다.
 
 ---
 
-## 7. Communication & Collaboration
+## 5. 근무 환경 요건
 
-7.1. **Primary Tools:** The following tools are standard for remote collaboration:
-   - **Slack** — real-time messaging and team channels
-   - **Google Meet / Zoom** — video conferencing
-   - **Google Calendar** — scheduling
-   - **Jira** — project and task tracking
-   - **Confluence** — documentation and knowledge sharing
-   - **GitHub** — source code and code review
-   - **Figma** — design collaboration
+5.1. **전용 업무 공간:** 재택근무 직원은 화상회의에 적합하고 집중할 수 있는 전용 업무 공간을 확보해야 합니다. 카페, 도서관 등 공용 공간을 주 업무 장소로 사용하는 것은 지양합니다.
 
-7.2. **Meeting Etiquette:** Cameras should be on for meetings with 5 or fewer participants, unless bandwidth is an issue. For larger meetings, camera use is optional but encouraged during introductions.
+5.2. **인체공학적 환경:** 인체공학적 모범 사례에 따라 업무 환경을 조성하는 것을 권장합니다. 인사팀에서 원격 인체공학 평가를 제공하며, 필요 시 신청할 수 있습니다.
 
-7.3. **Asynchronous First:** Teams are encouraged to default to asynchronous communication (Slack messages, Confluence docs, Loom recordings) and reserve synchronous meetings for discussions that require real-time interaction.
+5.3. **화상회의 환경:** 화상회의 시 깔끔한 배경(실물 또는 가상 배경)을 유지하고, 배경 소음을 최소화합니다. 3인 이상 참여하는 회의에서는 발언하지 않을 때 음소거를 사용합니다.
 
 ---
 
-## 8. Quarterly In-Office Weeks
+## 6. 보안 및 규정 준수
 
-8.1. **All-Hands Weeks:** Acme Corp holds quarterly in-office collaboration weeks (typically the second week of January, April, July, and October). All remote-eligible employees are expected to be on-site during these weeks.
+6.1. **VPN 연결 필수:** 재택근무 시 사내 시스템(이메일, 메신저, Jira, Confluence, 내부 대시보드 등)에 접속하기 전에 반드시 메타코드 VPN에 연결해야 합니다. 설정 방법은 VPN 설정 가이드(policy://vpn-setup)를 참고하십시오.
 
-8.2. **Travel & Accommodation:** For employees who live more than 50 miles from the nearest Acme Corp office, the company will cover:
-   - Round-trip travel (economy airfare or mileage reimbursement)
-   - Hotel accommodation for the duration of the in-office week
-   - Per diem meals at the standard domestic rate
+6.2. **기기 보안:** 업무에 사용하는 모든 기기는 정보보안 정책(policy://security-policy)을 준수해야 합니다:
+   - 디스크 전체 암호화 활성화 (macOS: FileVault, Windows: BitLocker)
+   - 5분 비활동 시 자동 화면 잠금
+   - 운영체제 및 보안 패치 최신 상태 유지
+   - 회사 지정 백신 프로그램 설치 및 실행
 
-8.3. **Planning:** In-office week dates are published at least 8 weeks in advance. Employees who cannot attend due to extenuating circumstances must notify their manager and HR at least 3 weeks before the scheduled week.
+6.3. **기밀 정보 보호:** 공공 장소에서 기밀 또는 제한 정보를 열람하거나 화면에 노출하지 않아야 합니다. 외부 출장이나 공유 공간에서는 화면 보안 필름 사용을 권장합니다.
 
----
-
-## 9. Performance & Accountability
-
-9.1. **Output-Based Evaluation:** Remote employees are evaluated on deliverables and outcomes, not hours logged. Managers should set clear, measurable objectives and conduct regular 1:1 check-ins (minimum weekly).
-
-9.2. **Self-Reporting:** Employees are responsible for updating Jira tickets and project boards daily to reflect progress. This ensures visibility and supports asynchronous collaboration.
-
-9.3. **Trial Period:** New remote arrangements begin with a 30-day trial period. At the end of the trial, the manager and employee will review the arrangement and decide whether to continue, modify, or discontinue remote work.
+6.4. **Wi-Fi 보안:** 비밀번호로 보호되는 안전한 Wi-Fi 네트워크를 사용해야 합니다. 공용 Wi-Fi(호텔, 공항, 카페 등)는 반드시 VPN 연결 상태에서만 사용합니다.
 
 ---
 
-## 10. Revocation & Exceptions
+## 7. 소통 및 협업
 
-10.1. **Revocation:** Remote work privileges may be revoked at any time by the employee's manager or HR if:
-   - Performance standards are not met
-   - Communication or availability expectations are repeatedly unmet
-   - Security policy violations occur
-   - Business needs require on-site presence
+7.1. **주요 협업 도구:** 원격 협업을 위한 표준 도구는 다음과 같습니다:
+   - **Slack** — 실시간 메시징 및 팀 채널
+   - **Google Meet / Zoom** — 화상 회의
+   - **Google Calendar** — 일정 관리
+   - **Jira** — 프로젝트 및 업무 관리
+   - **Confluence** — 문서 및 지식 공유
+   - **GitHub** — 소스코드 및 코드 리뷰
+   - **Figma** — 디자인 협업
 
-10.2. **Exceptions:** Requests for exceptions to this policy (e.g., more than 3 remote days per week, international remote work) must be submitted to HR in writing and approved by the department VP.
+7.2. **회의 에티켓:** 5인 이하 회의에서는 카메라를 켜는 것을 원칙으로 합니다 (네트워크 문제 시 제외). 대규모 회의에서는 카메라 사용이 선택이나, 자기소개 시 카메라를 켜는 것을 권장합니다.
 
-10.3. **International Remote Work:** Working from outside the United States requires prior approval from HR and Legal due to tax, labor law, and data residency implications. Requests must be submitted at least 30 days in advance.
-
----
-
-## 11. Contact & Resources
-
-- **HR Remote Work Team:** remote-work@acmecorp.com
-- **IT Help Desk:** it-support@acmecorp.com or Slack #it-helpdesk
-- **Ergonomic Assessment Requests:** hr-wellness@acmecorp.com
-- **VPN Issues:** See VPN Setup & Usage Guide or Slack #vpn-support
+7.3. **비동기 우선 원칙:** 팀은 기본적으로 비동기 소통(Slack 메시지, Confluence 문서, Loom 녹화 등)을 활용하고, 실시간 논의가 필요한 경우에만 동기 회의를 진행합니다.
 
 ---
 
-*This policy is reviewed annually and may be updated at any time. Employees will be notified of material changes via email and Slack #company-announcements.*
+## 8. 분기별 출근 주간
+
+8.1. **전사 출근 주간:** 메타코드는 분기별 전사 출근 주간을 운영합니다 (통상 1월, 4월, 7월, 10월 둘째 주). 재택근무 대상 전 직원은 해당 주간 동안 출근해야 합니다.
+
+8.2. **교통비 및 숙박 지원:** 사무실에서 50km 이상 거리에 거주하는 직원에게는 다음을 지원합니다:
+   - 왕복 교통비 (KTX, 항공권 또는 자가용 유류비)
+   - 출근 주간 동안의 숙박비
+   - 식비 일 2만원 지급
+
+8.3. **사전 공지:** 전사 출근 주간 일정은 최소 8주 전에 공지됩니다. 부득이한 사유로 참석이 어려운 경우, 최소 3주 전에 상사 및 인사팀에 통보해야 합니다.
+
+---
+
+## 9. 성과 및 책임
+
+9.1. **성과 중심 평가:** 재택근무 직원은 근무 시간이 아닌 업무 결과물과 성과를 기준으로 평가됩니다. 관리자는 명확하고 측정 가능한 목표를 설정하고, 최소 주 1회 1:1 미팅을 진행합니다.
+
+9.2. **업무 현황 보고:** 직원은 매일 Jira 티켓 및 프로젝트 보드를 업데이트하여 진행 상황을 공유해야 합니다. 이를 통해 업무 가시성을 확보하고 비동기 협업을 지원합니다.
+
+9.3. **시범 기간:** 신규 재택근무 시작 시 30일간의 시범 기간을 운영합니다. 시범 기간 종료 후 관리자와 직원이 함께 검토하여 재택근무의 지속, 수정, 또는 중단 여부를 결정합니다.
+
+---
+
+## 10. 철회 및 예외
+
+10.1. **철회:** 다음의 경우 관리자 또는 인사팀이 재택근무 권한을 철회할 수 있습니다:
+   - 성과 기준 미달
+   - 소통 또는 응답 가능 시간 기대치 반복 미충족
+   - 보안 정책 위반
+   - 사업상 현장 출근이 필요한 경우
+
+10.2. **예외 신청:** 본 정책의 예외 사항(주 3일 이상 재택, 해외 원격근무 등)은 인사팀에 서면으로 신청하고 부서 임원의 승인을 받아야 합니다.
+
+10.3. **해외 원격근무:** 대한민국 외 지역에서의 원격근무는 세무, 노동법 및 데이터 관련 사항으로 인해 인사팀 및 법무팀의 사전 승인이 필요합니다. 최소 30일 전에 신청해야 합니다.
+
+---
+
+## 11. 연락처
+
+- **인사팀 재택근무 담당:** remote-work@metacode.co.kr
+- **IT 헬프데스크:** it-support@metacode.co.kr 또는 Slack #it-helpdesk
+- **인체공학 평가 신청:** hr-wellness@metacode.co.kr
+- **VPN 관련 문의:** VPN 설정 가이드(policy://vpn-setup) 참고 또는 Slack #vpn-support
+
+---
+
+*본 정책은 매년 검토되며, 필요 시 수시로 업데이트될 수 있습니다. 중요한 변경 사항은 이메일 및 Slack #company-announcements 채널을 통해 안내됩니다.*

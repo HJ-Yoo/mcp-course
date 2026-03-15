@@ -1,309 +1,339 @@
 ---
-title: New Employee IT Onboarding Checklist
-tags: [onboarding, new-hire, setup, checklist]
+title: 신규 입사자 IT 온보딩 체크리스트
+tags: [온보딩, 신입, 설정, 체크리스트]
+last_updated: 2026-02-10
+author: IT운영팀
 ---
 
-# New Employee IT Onboarding Checklist
+# 신규 입사자 IT 온보딩 체크리스트
 
-**Last Updated:** February 10, 2026
-**Maintained By:** IT Operations & People Ops
-**Contact:** onboarding@acmecorp.com or Slack #it-onboarding
-
----
-
-## Overview
-
-Welcome to Acme Corp! This checklist covers everything you need to get set up with our IT systems and tools. Your IT onboarding buddy and manager will guide you through the process, but this document serves as your comprehensive reference.
-
-Checkboxes below are for tracking purposes. Work through them with your onboarding buddy during your first week.
+**최종 업데이트:** 2026년 2월 10일
+**관리 부서:** IT운영팀 & 피플팀
+**문의:** onboarding@metacode.co.kr 또는 Slack #IT도움말
 
 ---
 
-## Pre-Start (Handled by IT Before Day 1)
+## 1. 개요
 
-The IT team will complete these items before your start date:
+메타코드에 오신 것을 환영합니다! 이 체크리스트는 사내 IT 시스템 및 업무 도구 설정에 필요한 모든 사항을 다루고 있습니다. IT 온보딩 버디와 매니저가 전체 과정을 안내해 드리지만, 이 문서를 종합 참고 자료로 활용해 주세요.
 
-- [ ] Laptop ordered and configured (MacBook Pro or Dell Latitude based on role)
-- [ ] Okta account created (your-name@acmecorp.com)
-- [ ] Google Workspace account provisioned
-- [ ] Slack workspace invitation sent
-- [ ] Building badge and access card prepared
-- [ ] Desk assignment confirmed with Facilities
-- [ ] Welcome email sent with Day 1 instructions
+아래 체크박스는 진행 상황을 추적하기 위한 것입니다. 첫 주 동안 온보딩 버디와 함께 하나씩 완료해 나가세요.
 
 ---
 
-## Day 1: First Day Setup
+## 2. 입사 전 준비 (IT팀 사전 작업)
 
-### Morning (9:00 AM - 12:00 PM)
+IT팀이 입사일 전에 아래 항목을 완료합니다:
 
-- [ ] **Pick up equipment** from IT desk (HQ Floor 3, Room 305):
-  - Laptop with charger
-  - External monitor (if requested)
-  - Keyboard and mouse
-  - Headset
-  - Docking station (if applicable)
-  - Building badge and access card
-
-- [ ] **Laptop initial setup:**
-  - Power on and sign in with your temporary credentials (provided in welcome email)
-  - Set a new password meeting the [security policy requirements](policy://security-policy) (14+ characters, 3 of 4 character types)
-  - Enable FileVault disk encryption (IT will verify via Jamf)
-  - Connect to Wi-Fi: `AcmeCorp-Secure` (authenticate with Okta)
-
-- [ ] **Okta SSO activation:**
-  - Navigate to https://acmecorp.okta.com
-  - Log in with your @acmecorp.com email and temporary password
-  - Complete MFA setup:
-    - Primary: Install Okta Verify on your phone
-    - Backup: Register a hardware security key (YubiKey provided by IT if applicable)
-
-- [ ] **Google Workspace setup:**
-  - Access Gmail at https://mail.google.com
-  - Set up email signature (template at https://intranet.acmecorp.com/brand/email-signature)
-  - Configure Google Calendar with your working hours and time zone
-  - Join team shared drives as directed by your manager
-
-### Afternoon (1:00 PM - 5:00 PM)
-
-- [ ] **Slack setup:**
-  - Download Slack desktop app (https://slack.com/downloads)
-  - Sign in via Okta SSO
-  - Complete your profile:
-    - Full name, role, department
-    - Profile photo
-    - Phone number
-    - Manager name
-    - Start date
-  - Join mandatory channels:
-    - #general
-    - #company-announcements
-    - #it-helpdesk
-    - #security-incidents
-    - Your department channel (your manager will share)
-    - Your team channel
-
-- [ ] **Building badge activation:**
-  - Visit the Security desk on Floor 1 for badge photo
-  - Test badge access on your assigned floor
-  - Verify access to common areas (kitchen, gym, parking garage if applicable)
-
-- [ ] **1Password setup:**
-  - Accept the 1Password invitation email
-  - Install the 1Password desktop app and browser extension
-  - Create your Master Password (unique, not used anywhere else)
-  - Enable biometric unlock
+- [ ] 노트북 발주 및 사전 설정 완료 (직무에 따라 MacBook Pro 또는 삼성 갤럭시북)
+- [ ] Okta 계정 생성 (이름@metacode.co.kr)
+- [ ] Google Workspace 계정 프로비저닝
+- [ ] Slack 워크스페이스 초대 발송
+- [ ] 사원증 및 출입 카드 제작
+- [ ] 자리 배정 확인 (시설팀 협의 완료)
+- [ ] 첫 출근일 안내 이메일 발송 (출근 시간, 장소, 준비물 등)
 
 ---
 
-## Day 2-3: Tool Access & Configuration
+## 3. 1일차 오전: 초기 설정 (09:00 ~ 12:00)
 
-### Core Tools Setup
+### 장비 수령
 
-Work through these with your onboarding buddy:
+- [ ] **IT 데스크에서 장비 수령** (본사 3층 305호):
+  - 노트북 및 충전기
+  - 외장 모니터 (사전 요청 시)
+  - 키보드 및 마우스
+  - 헤드셋
+  - 도킹 스테이션 (해당 시)
+  - 사원증 및 출입 카드
 
-- [ ] **Jira access:**
-  - Log in at https://acmecorp.atlassian.net via Okta
-  - Request access to your team's Jira project (your manager will approve)
-  - Familiarize yourself with the team board and workflow
+### 노트북 초기 설정
 
-- [ ] **Confluence access:**
-  - Log in via Okta
-  - Bookmark your team's Confluence space
-  - Read the team's "Getting Started" page (your manager will share the link)
-  - Review the company-wide Confluence spaces:
-    - Engineering Handbook
-    - HR Policies
-    - IT Knowledge Base
+- [ ] **노트북 부팅 및 로그인:**
+  - 전원을 켜고 환영 이메일에 포함된 임시 자격 증명으로 로그인
+  - [보안 정책 요구사항](policy://security-policy)에 맞는 새 비밀번호 설정 (14자 이상, 대문자/소문자/숫자/특수문자 중 3가지 이상 포함)
+  - FileVault(Mac) 또는 BitLocker(Windows) 디스크 암호화 활성화 (IT팀이 Jamf/Intune을 통해 확인)
+  - Wi-Fi 연결: `MetaCode-Secure` (Okta 인증 사용)
 
-- [ ] **GitHub access:**
-  - Accept the GitHub organization invitation (sent to your @acmecorp.com email)
-  - Set up SSH keys:
+### Okta SSO 활성화
+
+- [ ] **Okta 싱글 사인온 설정:**
+  - https://metacode.okta.com 접속
+  - @metacode.co.kr 이메일과 임시 비밀번호로 로그인
+  - MFA(다중 인증) 설정 완료:
+    - 기본 인증: 스마트폰에 Okta Verify 앱 설치
+    - 보조 인증: 하드웨어 보안 키(YubiKey) 등록 (IT팀 지급 시)
+
+### Google Workspace 설정
+
+- [ ] **Google Workspace 접속 및 설정:**
+  - Gmail 접속: https://mail.google.com
+  - 이메일 서명 설정 (템플릿: https://intranet.metacode.co.kr/brand/email-signature)
+  - Google 캘린더에 근무 시간 및 시간대(KST) 설정
+  - 매니저 안내에 따라 팀 공유 드라이브 참여
+
+---
+
+## 4. 1일차 오후: 추가 설정 (13:00 ~ 18:00)
+
+### Slack 설정
+
+- [ ] **Slack 데스크톱 앱 설치 및 설정:**
+  - Slack 앱 다운로드 (https://slack.com/downloads)
+  - Okta SSO를 통해 로그인
+  - 프로필 완성:
+    - 이름, 직무, 부서
+    - 프로필 사진
+    - 연락처 (휴대폰 번호)
+    - 매니저 이름
+    - 입사일
+  - 필수 채널 가입:
+    - #일반
+    - #전사공지
+    - #IT도움말
+    - #보안사고
+    - 소속 부서 채널 (매니저가 안내)
+    - 소속 팀 채널
+
+### 출입증 활성화
+
+- [ ] **사원증 및 출입 설정:**
+  - 1층 보안 데스크 방문하여 사원증 사진 촬영
+  - 배정된 층 출입 테스트
+  - 공용 공간(휴게실, 회의실, 주차장 등) 접근 확인
+
+### 1Password 설정
+
+- [ ] **1Password 비밀번호 관리자 설정:**
+  - 1Password 초대 이메일 수락
+  - 1Password 데스크톱 앱 및 브라우저 확장 프로그램 설치
+  - 마스터 비밀번호 생성 (고유한 비밀번호, 다른 곳에 사용하지 않는 것)
+  - 생체 인식 잠금 해제 활성화 (지문 또는 Face ID)
+
+---
+
+## 5. 2~3일차: 도구 접근 설정
+
+### 핵심 업무 도구
+
+온보딩 버디와 함께 아래 항목을 진행하세요:
+
+- [ ] **Jira 접근 설정:**
+  - Okta를 통해 https://metacode.atlassian.net 로그인
+  - 소속 팀의 Jira 프로젝트 접근 요청 (매니저 승인 필요)
+  - 팀 보드 및 워크플로 숙지
+
+- [ ] **Confluence 접근 설정:**
+  - Okta를 통해 로그인
+  - 소속 팀의 Confluence 스페이스 북마크
+  - 팀 "시작하기" 페이지 읽기 (매니저가 링크 공유)
+  - 전사 Confluence 스페이스 확인:
+    - 엔지니어링 핸드북
+    - 인사(HR) 정책
+    - IT 지식 베이스
+
+- [ ] **GitHub 접근 설정:**
+  - GitHub 조직 초대 수락 (@metacode.co.kr 이메일로 발송)
+  - SSH 키 설정:
     ```
-    ssh-keygen -t ed25519 -C "your-name@acmecorp.com"
+    ssh-keygen -t ed25519 -C "이름@metacode.co.kr"
     ```
-  - Add the public key to your GitHub profile
-  - Enable 2FA on GitHub (hardware key preferred)
-  - Clone the team repository as directed by your manager
-  - Review the contribution guidelines in CONTRIBUTING.md
+  - 생성된 공개 키를 GitHub 프로필에 추가
+  - GitHub에서 2FA(이중 인증) 활성화 (하드웨어 키 권장)
+  - 매니저 안내에 따라 팀 레포지토리 클론
+  - CONTRIBUTING.md 기여 가이드라인 확인
 
-- [ ] **Figma access** (design & product roles):
-  - Accept the Figma team invitation
-  - Install the Figma desktop app
-  - Review the Acme Corp Design System library
+- [ ] **Figma 접근 설정** (디자인 및 프로덕트 직군):
+  - Figma 팀 초대 수락
+  - Figma 데스크톱 앱 설치
+  - 메타코드 디자인 시스템 라이브러리 확인
 
-- [ ] **VPN setup:**
-  - Follow the [VPN Setup & Usage Guide](policy://vpn-guide)
-  - Download your WireGuard configuration from the IT Self-Service Portal
-  - Test VPN connection from the office (to verify it works before going remote)
-  - Bookmark internal sites:
-    - https://intranet.acmecorp.com
-    - https://itportal.acmecorp.com
-    - https://status.acmecorp.com
+- [ ] **VPN 설정:**
+  - [VPN 설정 및 사용 가이드](policy://vpn-setup)를 참고하여 진행
+  - IT 셀프서비스 포털에서 WireGuard 설정 파일 다운로드
+  - 사무실에서 VPN 연결 테스트 (재택근무 전에 정상 작동 확인)
+  - 주요 사내 사이트 북마크:
+    - https://intranet.metacode.co.kr
+    - https://itportal.metacode.co.kr
+    - https://status.metacode.co.kr
 
-### Communication Tools
+### 커뮤니케이션 도구
 
-- [ ] **Zoom account:**
-  - Log in at https://zoom.us via Okta SSO
-  - Install the Zoom desktop client
-  - Test audio and video
-  - Set up your Personal Meeting ID and waiting room
+- [ ] **Zoom 계정 설정:**
+  - Okta SSO를 통해 https://zoom.us 로그인
+  - Zoom 데스크톱 클라이언트 설치
+  - 오디오 및 비디오 테스트
+  - 개인 미팅 ID 및 대기실 설정
 
 - [ ] **Google Meet:**
-  - No separate setup needed (part of Google Workspace)
-  - Test a call with your onboarding buddy
+  - 별도 설정 불필요 (Google Workspace에 포함)
+  - 온보딩 버디와 테스트 통화 진행
 
 ---
 
-## Day 4-5: Security Training & Compliance
+## 6. 4~5일차: 보안 교육 및 규정
 
-- [ ] **Security awareness training:**
-  - Complete the "New Hire Security Fundamentals" course in KnowBe4
-  - Duration: approximately 45 minutes
-  - Topics covered:
-    - Phishing identification
-    - Password security
-    - Data classification
-    - Clean desk policy
-    - Incident reporting
-  - **Deadline:** Must be completed by end of Week 1
+### 보안 인식 교육
 
-- [ ] **Policy acknowledgments** (complete in Workday):
-  - [ ] Information Security Policy
-  - [ ] Remote Work Policy
-  - [ ] Acceptable Use Policy
-  - [ ] Expense Reimbursement Policy
-  - [ ] Code of Conduct
-  - [ ] Data Privacy Policy
+- [ ] **KnowBe4 보안 교육 수료:**
+  - KnowBe4에서 "신규 입사자 보안 기초" 과정 이수
+  - 소요 시간: 약 45분
+  - 교육 내용:
+    - 피싱 메일 식별 방법
+    - 비밀번호 보안
+    - 데이터 분류 체계
+    - 클린 데스크 정책
+    - 보안 사고 신고 절차
+  - **기한:** 1주차 종료 전까지 반드시 완료
 
-- [ ] **Phishing test baseline:**
-  - You will receive a simulated phishing email during your first week
-  - This establishes your baseline (no penalty for clicking)
-  - Review the "How to Report Phishing" guide after the test
+### 정책 동의
 
----
+- [ ] **사내 정책 확인 및 동의** (Workday에서 완료):
+  - [ ] 정보보안 정책
+  - [ ] [재택근무 정책](policy://remote-work)
+  - [ ] 사내 시스템 이용 규정
+  - [ ] 경비 정산 정책
+  - [ ] 윤리 강령
+  - [ ] 개인정보 보호 정책
 
-## Week 1: Equipment Requests
+### 피싱 테스트
 
-If you need additional equipment beyond your standard setup, submit requests through the IT Self-Service Portal:
-
-- [ ] **Review your equipment needs:**
-  - Second monitor
-  - Ergonomic keyboard (Microsoft Ergonomic Keyboard, Kinesis Advantage360)
-  - Trackpad (Apple Magic Trackpad)
-  - Laptop stand (Rain Design mStand)
-  - USB-C hub or dock
-  - Webcam upgrade
-  - Additional cables
-
-- [ ] **Submit equipment request:**
-  - Go to https://itportal.acmecorp.com/equipment
-  - Select items from the catalog
-  - Your manager will approve the request
-  - IT will fulfill within 3-5 business days
-
-- [ ] **Home office stipend** (if eligible for remote work):
-  - After 90 days, you become eligible for the $1,500 home office stipend
-  - See the [Remote Work Policy](policy://remote-work) for details
+- [ ] **피싱 시뮬레이션 테스트:**
+  - 입사 첫 주 동안 모의 피싱 이메일이 발송됩니다
+  - 기초 수준 측정 목적이며 클릭해도 불이익은 없습니다
+  - 테스트 후 "피싱 신고 방법" 가이드를 반드시 확인하세요
 
 ---
 
-## Week 2: Team Integration
+## 7. 1주차: 추가 장비 요청
 
-- [ ] **Meet your IT onboarding buddy** for a wrap-up session:
-  - Review any outstanding setup items
-  - Q&A on tools and processes
-  - Confirm all systems are working
+기본 지급 장비 외에 추가 장비가 필요하면 IT 셀프서비스 포털에서 요청하세요.
 
-- [ ] **Access verification:**
-  - [ ] Can send and receive email
-  - [ ] Can access Slack and all required channels
-  - [ ] Can access Jira and see team board
-  - [ ] Can access Confluence and team space
-  - [ ] Can access GitHub and clone repositories
-  - [ ] VPN connects successfully from outside the office
-  - [ ] Can print to your floor's printer
-  - [ ] Building badge works on all required doors
+- [ ] **장비 필요 사항 검토:**
+  - 추가 모니터
+  - 인체공학 키보드 (로지텍 ERGO K860, 한성 GK898B Pro 등)
+  - 트랙패드 (Apple Magic Trackpad)
+  - 노트북 스탠드
+  - USB-C 허브 또는 독
+  - 웹캠 업그레이드
+  - 추가 케이블
 
-- [ ] **Manager 1:1:**
-  - Review 30/60/90 day milestones
-  - Confirm tool access is complete
-  - Discuss team communication norms and meeting schedules
+- [ ] **장비 요청 제출:**
+  - https://itportal.metacode.co.kr/equipment 접속
+  - 카탈로그에서 원하는 항목 선택
+  - 매니저 승인 후 IT팀이 영업일 기준 3~5일 이내 지급
 
----
-
-## 30/60/90 Day IT Milestones
-
-### Day 30
-
-- [ ] All tools and systems set up and actively used
-- [ ] Security training completed and acknowledged
-- [ ] VPN tested from home/remote location
-- [ ] Equipment requests fulfilled
-- [ ] Comfortable with Jira/Confluence workflows
-- [ ] 1Password vault organized with all work credentials
-
-### Day 60
-
-- [ ] Remote work eligible (if applicable, after 90-day probation, but begin prep)
-- [ ] Familiar with IT self-service tools and knowledge base
-- [ ] Completed first quarterly security awareness module
-- [ ] Submitted first expense report in Concur (if applicable)
-
-### Day 90
-
-- [ ] Remote work application submitted (if desired)
-- [ ] All policy acknowledgments up to date
-- [ ] Fully autonomous with IT tools and processes
-- [ ] Know how to submit IT tickets and equipment requests
-- [ ] Onboarding feedback submitted to People Ops
+- [ ] **재택근무 환경 지원금** (재택근무 대상자):
+  - 입사 90일 후 200만 원 상당의 재택근무 환경 지원금 신청 가능
+  - 자세한 내용은 [재택근무 정책](policy://remote-work) 참고
 
 ---
 
-## IT Mentor / Onboarding Buddy
+## 8. 2주차: 팀 통합
 
-Your IT onboarding buddy is assigned by the IT team and will be your go-to person for the first 30 days for any setup questions or technical issues.
+### 온보딩 버디 마무리 세션
 
-**Your buddy will help with:**
-- Laptop and tool setup
-- Navigating the IT Self-Service Portal
-- Understanding team-specific tool configurations
-- Connecting you with the right IT resources
+- [ ] **IT 온보딩 버디와 마무리 미팅:**
+  - 미완료 설정 항목 확인
+  - 도구 및 프로세스 관련 Q&A
+  - 모든 시스템 정상 작동 확인
 
-**Your buddy is NOT:**
-- A replacement for the IT Help Desk (for issues, use Slack #it-helpdesk)
-- Your only resource (feel free to ask anyone on the team)
+### 접근 권한 최종 확인
 
----
+- [ ] **시스템별 접근 확인:**
+  - [ ] 이메일 송수신 가능
+  - [ ] Slack 접속 및 필수 채널 가입 완료
+  - [ ] Jira 접속 및 팀 보드 확인 가능
+  - [ ] Confluence 접속 및 팀 스페이스 확인 가능
+  - [ ] GitHub 접속 및 레포지토리 클론 가능
+  - [ ] 사무실 외부에서 VPN 연결 성공
+  - [ ] 해당 층 프린터 출력 가능
+  - [ ] 사원증으로 필요 구역 출입 가능
 
-## Frequently Asked Questions
+### 매니저 1:1 미팅
 
-**Q: What if my laptop has a hardware issue on Day 1?**
-A: Visit IT on Floor 3, Room 305. We keep spare laptops configured and ready for immediate swap.
-
-**Q: Can I install personal software on my work laptop?**
-A: Limited personal use is allowed per the Acceptable Use Policy. Software installations must be approved through the IT Self-Service Portal. Contact IT if you need specific development tools.
-
-**Q: What if I forget my Okta password?**
-A: Use the self-service password reset at https://acmecorp.okta.com/forgot-password. If locked out, contact IT Help Desk.
-
-**Q: When do I get VPN access?**
-A: VPN access is provisioned on Day 1 as part of your Okta account setup. Follow the VPN Guide to configure your client.
-
-**Q: I need software not in the standard list. How do I request it?**
-A: Submit a Software Request through the IT Self-Service Portal. IT Security will review and approve within 3 business days.
+- [ ] **매니저와 1:1 진행:**
+  - 30/60/90일 마일스톤 검토
+  - 도구 접근 권한 최종 확인
+  - 팀 커뮤니케이션 규범 및 회의 일정 논의
 
 ---
 
-## Contact & Support
+## 9. 30/60/90일 마일스톤
 
-- **IT Help Desk:** Slack #it-helpdesk or it-support@acmecorp.com
-- **IT Onboarding:** onboarding@acmecorp.com
-- **IT Self-Service Portal:** https://itportal.acmecorp.com
-- **Security Questions:** security@acmecorp.com
-- **HR / People Ops:** people@acmecorp.com
-- **Facilities:** facilities@acmecorp.com
+### 30일차
+
+- [ ] 모든 업무 도구 및 시스템 설정 완료 및 실제 활용 중
+- [ ] 보안 교육 이수 및 정책 동의 완료
+- [ ] 자택 또는 외부에서 VPN 테스트 완료
+- [ ] 추가 장비 요청 처리 완료
+- [ ] Jira/Confluence 워크플로 숙지
+- [ ] 1Password에 모든 업무 자격 증명 정리 완료
+
+### 60일차
+
+- [ ] 재택근무 준비 (해당 시, 90일 수습 기간 후 신청 가능하나 사전 준비 시작)
+- [ ] IT 셀프서비스 도구 및 지식 베이스 활용에 익숙
+- [ ] 분기별 보안 인식 교육 첫 모듈 이수 완료
+- [ ] 첫 경비 정산 제출 완료 (해당 시)
+
+### 90일차
+
+- [ ] 재택근무 신청서 제출 완료 (희망 시)
+- [ ] 모든 정책 동의 최신 상태 유지
+- [ ] IT 도구 및 프로세스 완전 자립
+- [ ] IT 티켓 제출 및 장비 요청 방법 숙지
+- [ ] 온보딩 피드백 피플팀에 제출 완료
 
 ---
 
-*This checklist is maintained by IT Operations. Last reviewed: February 2026. Report errors or suggestions to it-ops@acmecorp.com.*
+## 10. IT 온보딩 버디
+
+IT 온보딩 버디는 IT팀에서 배정하며, 입사 후 30일간 설정 관련 질문이나 기술적 문제에 대해 가장 먼저 도움을 받을 수 있는 분입니다.
+
+**버디가 도와주는 것:**
+- 노트북 및 업무 도구 설정
+- IT 셀프서비스 포털 사용 방법 안내
+- 팀별 도구 설정 관련 안내
+- 적절한 IT 담당자 연결
+
+**버디가 대신할 수 없는 것:**
+- IT 헬프데스크 (장애/이슈 발생 시 Slack #IT도움말 이용)
+- 유일한 도움 창구가 아닙니다 (팀원 누구에게나 편하게 질문하세요)
+
+---
+
+## 11. 자주 묻는 질문
+
+**Q: 1일차에 노트북에 하드웨어 문제가 있으면 어떻게 하나요?**
+A: 본사 3층 305호 IT 데스크를 방문하세요. 즉시 교체할 수 있는 예비 노트북이 항상 준비되어 있습니다.
+
+**Q: 업무용 노트북에 개인 소프트웨어를 설치해도 되나요?**
+A: 사내 시스템 이용 규정에 따라 제한적인 개인 사용은 허용됩니다. 소프트웨어 설치는 IT 셀프서비스 포털을 통해 승인을 받아야 합니다. 특정 개발 도구가 필요한 경우 IT팀에 문의하세요.
+
+**Q: Okta 비밀번호를 잊어버렸으면 어떻게 하나요?**
+A: https://metacode.okta.com/forgot-password 에서 셀프서비스 비밀번호 재설정이 가능합니다. 계정이 잠긴 경우 IT 헬프데스크에 연락하세요.
+
+**Q: VPN 접근 권한은 언제 받나요?**
+A: VPN 접근 권한은 입사 1일차에 Okta 계정과 함께 자동 프로비저닝됩니다. [VPN 설정 가이드](policy://vpn-setup)를 참고하여 클라이언트를 설정하세요.
+
+**Q: 표준 목록에 없는 소프트웨어가 필요합니다. 어떻게 요청하나요?**
+A: IT 셀프서비스 포털에서 소프트웨어 요청을 제출하세요. IT 보안팀이 영업일 기준 3일 이내에 검토 및 승인합니다.
+
+**Q: 재택근무는 언제부터 가능한가요?**
+A: 입사 90일 수습 기간 종료 후 매니저 승인을 거쳐 재택근무를 신청할 수 있습니다. 자세한 내용은 [재택근무 정책](policy://remote-work)을 확인하세요.
+
+---
+
+## 12. 연락처 및 지원
+
+- **IT 헬프데스크:** Slack #IT도움말 또는 it-support@metacode.co.kr
+- **IT 온보딩:** onboarding@metacode.co.kr
+- **IT 셀프서비스 포털:** https://itportal.metacode.co.kr
+- **보안 관련 문의:** security@metacode.co.kr 또는 Slack #보안사고
+- **인사(피플팀):** people@metacode.co.kr
+- **시설 관리:** facilities@metacode.co.kr
+
+---
+
+*이 체크리스트는 IT운영팀에서 관리합니다. 최종 검토: 2026년 2월. 오류나 개선 제안은 it-ops@metacode.co.kr 로 보내주세요.*

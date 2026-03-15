@@ -1,203 +1,230 @@
 ---
-title: Expense Reimbursement Policy
-tags: [expense, travel, reimbursement, finance]
+title: 경비 정산 정책
+tags: [경비, 출장, 정산, 재무]
+last_updated: 2026-01-20
+author: 재무팀
 ---
 
-# Expense Reimbursement Policy
+# 경비 정산 정책
 
-**Effective Date:** January 1, 2026
-**Last Revised:** January 20, 2026
-**Policy Owner:** Finance Department
-**Applies To:** All full-time and part-time employees of Acme Corp
-
----
-
-## 1. Purpose
-
-This policy establishes guidelines for business-related expense reimbursement at Acme Corp. It ensures consistent, transparent, and fiscally responsible handling of employee expenses while maintaining compliance with tax regulations and internal controls.
+**시행일:** 2026년 1월 1일
+**최종 개정일:** 2026년 1월 20일
+**정책 관리 부서:** 재무팀
+**적용 대상:** 메타코드 전 임직원 (정규직 및 계약직)
 
 ---
 
-## 2. General Principles
+## 1. 목적
 
-2.1. Expenses must be reasonable, necessary, and directly related to Acme Corp business activities.
-
-2.2. Employees should exercise the same judgment and fiscal responsibility they would with their own funds.
-
-2.3. All expenses must be pre-approved when the policy requires it and submitted for reimbursement in a timely manner.
-
-2.4. Falsification of expense reports is grounds for immediate termination and may be subject to legal action.
+본 정책은 메타코드 임직원의 업무 관련 경비 정산에 대한 기준과 절차를 수립합니다. 일관되고 투명하며 재정적으로 책임 있는 경비 처리를 보장하고, 세무 규정 및 내부 통제 기준을 준수하는 것을 목적으로 합니다.
 
 ---
 
-## 3. Expense Reporting System
+## 2. 일반 원칙
 
-3.1. **Concur:** All expense reports must be submitted through **SAP Concur** (accessible via Okta SSO at concur.acmecorp.com). Paper or email submissions are not accepted.
+2.1. 경비는 합리적이고 필수적이며, 메타코드의 업무 활동과 직접적으로 관련되어야 합니다.
 
-3.2. **Mobile App:** The Concur mobile app is available for iOS and Android and supports receipt photo capture. Employees are encouraged to photograph receipts immediately at the point of purchase.
+2.2. 임직원은 본인의 자금을 사용하는 것과 동일한 판단력과 재정적 책임감을 가지고 경비를 집행해야 합니다.
 
-3.3. **Corporate Card:** Employees at the manager level and above are eligible for an Acme Corp American Express corporate card. Corporate card transactions are automatically imported into Concur.
+2.3. 모든 경비는 본 정책에서 요구하는 경우 사전 승인을 받아야 하며, 적시에 정산 신청을 해야 합니다.
 
----
+2.4. 경비 보고서의 위조 또는 허위 기재는 즉시 해고 사유에 해당하며, 법적 조치의 대상이 될 수 있습니다.
 
-## 4. Receipt Requirements
-
-4.1. **Receipts Required:** Itemized receipts are required for all expenses of **$25 or more**. Credit card statements alone are not sufficient.
-
-4.2. **Lost Receipts:** If a receipt is lost, a Lost Receipt Affidavit must be completed in Concur. Repeated lost receipt claims may trigger an audit review.
-
-4.3. **Digital Receipts:** Email confirmations and digital receipts are acceptable. Forward them to receipts@concur.acmecorp.com or upload directly in the Concur app.
+2.5. 회사 법인카드 사용 시에도 본 정책의 모든 기준이 동일하게 적용됩니다.
 
 ---
 
-## 5. Submission & Approval Timelines
+## 3. 경비 보고 시스템
 
-5.1. **Submission Deadline:** Expense reports must be submitted within **30 calendar days** of the expense date. Reports submitted after 30 days require VP-level approval and may be denied.
+3.1. **SAP Concur:** 모든 경비 보고서는 **SAP Concur** (Okta SSO를 통해 concur.metacode.co.kr에서 접속)를 통해 제출해야 합니다. 종이 문서나 이메일을 통한 제출은 접수되지 않습니다.
 
-5.2. **Approval Timeline:** Managers must approve or reject submitted expense reports within **5 business days**.
+3.2. **모바일 앱:** Concur 모바일 앱은 iOS 및 Android에서 사용 가능하며, 영수증 촬영 기능을 지원합니다. 구매 시점에 즉시 영수증을 촬영하는 것을 권장합니다.
 
-5.3. **Reimbursement Processing:** Approved expenses are reimbursed via direct deposit within **10 business days** of final approval. Reimbursement appears as a separate line item on your pay stub.
+3.3. **법인카드:** 과장급 이상 임직원은 메타코드 법인카드(신한카드) 발급 대상입니다. 법인카드 거래 내역은 Concur에 자동으로 연동됩니다.
+
+3.4. **ERP 연동:** Concur에서 승인 완료된 경비는 SAP ERP 시스템에 자동으로 반영되어 회계 처리됩니다.
 
 ---
 
-## 6. Approval Thresholds
+## 4. 영수증 요구사항
 
-6.1. Expense approval follows this hierarchy:
+4.1. **영수증 필수:** **₩30,000 이상**의 모든 경비에 대해 항목별 영수증(간이영수증 불가, 세금계산서 또는 카드매출전표)이 필요합니다. 카드 이용내역서만으로는 증빙이 불충분합니다.
 
-| Total Expense Amount | Required Approver |
+4.2. **영수증 분실:** 영수증을 분실한 경우 Concur에서 영수증 분실 확인서를 작성해야 합니다. 반복적인 영수증 분실은 감사 대상이 될 수 있습니다.
+
+4.3. **전자 영수증:** 이메일 확인서 및 전자 영수증도 유효합니다. receipts@concur.metacode.co.kr로 전달하거나 Concur 앱에서 직접 업로드하시기 바랍니다.
+
+4.4. **적격 증빙:** 세법상 적격 증빙(세금계산서, 카드매출전표, 현금영수증)을 원칙으로 하며, ₩30,000 미만 소액이라도 적격 증빙 수취를 권장합니다.
+
+---
+
+## 5. 제출 및 승인 기한
+
+5.1. **제출 기한:** 경비 보고서는 경비 발생일로부터 **30일 이내**에 제출해야 합니다. 30일이 경과한 보고서는 부사장급 승인이 필요하며, 정산이 거부될 수 있습니다.
+
+5.2. **승인 기한:** 관리자는 제출된 경비 보고서를 **5영업일 이내**에 승인 또는 반려해야 합니다.
+
+5.3. **정산 처리:** 최종 승인된 경비는 승인일로부터 **10영업일 이내**에 급여 계좌로 입금됩니다. 정산액은 급여명세서에 별도 항목으로 표시됩니다.
+
+5.4. **월 마감:** 매월 말일 기준 미제출 경비는 익월 5영업일까지 반드시 제출해야 하며, 분기 마감 시 미정산 건은 재무팀에서 일괄 독촉합니다.
+
+---
+
+## 6. 승인 한도
+
+6.1. 경비 승인은 다음 기준에 따릅니다:
+
+| 경비 총액 | 승인 권한자 |
 |---|---|
-| Up to $500 | Direct Manager |
-| $501 - $2,000 | Director |
-| $2,001 - $5,000 | Vice President |
-| Over $5,000 | CFO |
+| ₩500,000 이하 | 직속 상관 |
+| ₩500,001 ~ ₩2,000,000 | 이사 |
+| ₩2,000,001 ~ ₩5,000,000 | 부사장 |
+| ₩5,000,000 초과 | CFO |
 
-6.2. **Pre-Approval:** Expenses expected to exceed **$1,000** in a single trip or purchase require pre-approval before the expense is incurred. Submit a pre-approval request in Concur with estimated costs.
+6.2. **사전 승인:** 1회 출장 또는 단일 구매로 **₩1,000,000**을 초과할 것으로 예상되는 경비는 발생 전에 사전 승인을 받아야 합니다. Concur에서 예상 비용과 함께 사전 승인 요청을 제출하시기 바랍니다.
 
-6.3. **Split Reporting:** Intentionally splitting a single expense across multiple reports to avoid approval thresholds is prohibited and considered a policy violation.
-
----
-
-## 7. Travel Expenses
-
-### 7.1. Airfare
-
-- **Class of Service:** Economy class is required for all domestic flights and international flights under 6 hours. Premium economy is permitted for international flights over 6 hours. Business class requires VP pre-approval.
-- **Advance Booking:** Flights must be booked at least **14 days in advance** when possible. Last-minute bookings require manager justification in Concur.
-- **Booking Platform:** Use the Acme Corp travel portal (powered by Navan, accessible via Okta) for all flight bookings. Out-of-policy bookings made outside Navan will not be reimbursed without prior approval.
-- **Seat Selection & Upgrades:** Basic seat selection fees are reimbursable. Upgrades to premium cabins using personal miles/points are not reimbursable.
-- **Cancellation/Change Fees:** Reimbursable when due to business reasons. Fees due to personal changes are the employee's responsibility.
-
-### 7.2. Hotel & Lodging
-
-- **Nightly Rate Cap:** Up to **$250 per night** for domestic travel. International travel limits vary by city and are published in the Concur travel policy.
-- **Preferred Hotels:** Acme Corp has negotiated rates with Marriott, Hilton, and Hyatt. These should be booked through Navan when available.
-- **Extended Stay:** For trips exceeding 5 nights, employees should explore extended-stay options (Residence Inn, Homewood Suites) which may offer lower rates.
-- **Cancellation:** Cancel reservations at least 24 hours before check-in to avoid no-show charges.
-
-### 7.3. Ground Transportation
-
-- **Rental Cars:** Mid-size or smaller vehicles through Enterprise or National (Acme Corp corporate accounts). Full insurance coverage through the corporate card; decline rental company insurance.
-- **Ride-Share:** Uber and Lyft are reimbursable for business travel. Use the Uber for Business profile linked to your Acme Corp email.
-- **Personal Vehicle:** Mileage is reimbursed at **$0.67 per mile** (2026 IRS standard rate). Log mileage in Concur with origin, destination, and business purpose.
-- **Parking & Tolls:** Reimbursable with receipts. Airport long-term parking is preferred over short-term for trips exceeding 24 hours.
-
-### 7.4. Meals During Travel
-
-- **Per Diem:** Employees may claim up to **$75 per day** for meals during domestic travel and **$100 per day** for international travel. These limits include tax and tip.
-- **Itemized Receipts:** Required for individual meals exceeding $25. For per diem claims under the daily limit, a simple attestation in Concur is acceptable.
-- **Alcohol:** Alcoholic beverages during solo business meals are not reimbursable. Alcohol is permitted within reason when dining with clients (see Section 8).
-- **Room Service & Mini-Bar:** Reimbursable within the daily meal limit. Mini-bar items are not reimbursable.
+6.3. **분할 제출 금지:** 승인 한도를 우회하기 위해 단일 경비를 의도적으로 여러 보고서로 분할하여 제출하는 행위는 금지되며, 정책 위반으로 간주합니다.
 
 ---
 
-## 8. Client Entertainment
+## 7. 출장 경비
 
-8.1. **Per Person Cap:** Client entertainment expenses are capped at **$150 per person** per event, including food, beverage, tax, and gratuity.
+### 7.1. 항공
 
-8.2. **Documentation:** Client entertainment expenses must include:
-   - Names and titles of all attendees
-   - Company names of external attendees
-   - Business purpose of the meal/event
-   - Itemized receipt
+- **좌석 등급:** 국내선 및 6시간 미만 국제선은 이코노미석을 원칙으로 합니다. 6시간 이상 국제선은 프리미엄 이코노미가 허용됩니다. 비즈니스석은 부사장급 사전 승인이 필요합니다.
+- **사전 예약:** 가능한 경우 출발일 기준 최소 **14일 전**에 항공편을 예약해야 합니다. 긴급 예약 시 Concur에 관리자 사유서를 첨부해야 합니다.
+- **예약 플랫폼:** 모든 항공 예약은 메타코드 출장 포털(Navan, Okta를 통해 접속)을 사용해야 합니다. Navan 외부에서의 예약은 사전 승인 없이 정산되지 않습니다.
+- **좌석 지정 및 업그레이드:** 기본 좌석 지정 비용은 정산 가능합니다. 개인 마일리지를 이용한 상위 클래스 업그레이드 비용은 정산 불가합니다.
+- **취소/변경 수수료:** 업무상 사유로 인한 취소 및 변경 수수료는 정산 가능합니다. 개인 사유로 인한 수수료는 본인 부담입니다.
 
-8.3. **Pre-Approval:** Client entertainment expected to exceed $500 total requires pre-approval from the department director.
+### 7.2. 숙박
 
-8.4. **Alcohol:** Reasonable alcohol consumption during client entertainment is reimbursable. Use good judgment, and keep alcohol costs proportional to the total bill.
+- **1박 한도:** 국내 출장 시 **1박 ₩200,000** 이내를 원칙으로 합니다. 수도권(서울, 경기, 인천) 출장 시 **1박 ₩250,000** 이내까지 허용됩니다. 해외 출장 시 도시별 한도는 Concur 출장 정책에 게시됩니다.
+- **제휴 호텔:** 메타코드는 주요 호텔 체인과 특약을 체결하고 있습니다. 가능한 경우 Navan을 통해 제휴 호텔을 예약하시기 바랍니다.
+- **장기 출장:** 5박을 초과하는 출장 시 레지던스 호텔 또는 서비스드 아파트 등 장기 숙박 옵션을 검토해야 합니다.
+- **취소:** 체크인 최소 24시간 전에 예약을 취소하여 노쇼(No-show) 비용이 발생하지 않도록 해야 합니다.
 
-8.5. **Gift Policy:** Client gifts are limited to $100 per recipient per year. No cash or cash-equivalent gifts (gift cards) are permitted due to compliance regulations.
+### 7.3. 교통
 
----
+- **렌터카:** 중형 이하 차량을 원칙으로 하며, 메타코드 법인 계약 렌터카 업체(롯데렌터카, SK렌터카)를 이용해야 합니다. 법인카드에 포함된 보험을 적용하며, 렌터카 업체의 추가 보험은 가입하지 않습니다.
+- **택시/플랫폼:** 카카오택시, 타다 등 플랫폼 택시 이용 비용은 업무 출장 시 정산 가능합니다. 카카오택시 비즈니스 프로필(메타코드 이메일 연동)을 사용하시기 바랍니다.
+- **개인 차량:** 개인 차량 사용 시 **km당 ₩300**으로 정산합니다. Concur에 출발지, 목적지, 업무 목적을 기재해야 합니다.
+- **주차비 및 통행료:** 영수증 제출 시 정산 가능합니다. 24시간 이상 출장 시 공항 장기 주차장 이용을 권장합니다.
+- **KTX/SRT:** 일반실을 원칙으로 합니다. 특실은 이사급 이상 또는 이사급 사전 승인 시 이용 가능합니다.
 
-## 9. Conference & Professional Development
+### 7.4. 출장 중 식비
 
-9.1. **Pre-Approval Required:** All conference attendance must be pre-approved by the employee's manager and the department head. Submit requests at least **30 days** before the event.
-
-9.2. **Registration Fees:** Conference registration fees are reimbursable when the event is relevant to the employee's role and professional development.
-
-9.3. **Budget:** Each department has an annual professional development budget. Check with your manager for available funds before registering.
-
-9.4. **Travel for Conferences:** Standard travel policies (Sections 7.1-7.4) apply to conference travel.
-
-9.5. **Online Courses & Certifications:** Pre-approved online courses and certification exams are reimbursable up to $2,500 per employee per calendar year.
-
----
-
-## 10. Non-Reimbursable Expenses
-
-The following expenses are **not** reimbursable:
-
-- Personal entertainment or sightseeing during business trips
-- Traffic or parking violations
-- Airline club memberships (unless VP-level and above)
-- Travel insurance (covered by corporate card)
-- Clothing or personal grooming
-- Home office furniture (see Remote Work Policy for stipend)
-- Personal phone charges (unless on an approved BYOD plan)
-- First-class airfare (unless medically required with documentation)
-- Spouse/partner travel expenses
-- Gym memberships or fitness classes during travel
-- Laundry and dry cleaning (unless trip exceeds 5 consecutive nights)
+- **일비 한도:** 국내 출장 시 1일 **₩50,000**, 해외 출장 시 1일 **₩80,000**까지 식비를 청구할 수 있습니다. 이 한도에는 부가세 및 봉사료가 포함됩니다.
+- **영수증:** ₩30,000을 초과하는 개별 식사에 대해 항목별 영수증이 필요합니다. 일비 한도 이내의 청구 시에는 Concur에서 간단한 확인만으로 처리 가능합니다.
+- **주류:** 단독 업무 식사 시 주류 비용은 정산 불가합니다. 고객 접대 시 주류는 적정 수준에서 허용됩니다(제8조 참조).
+- **룸서비스 및 미니바:** 일일 식비 한도 내에서 룸서비스는 정산 가능합니다. 미니바 이용 비용은 정산 불가합니다.
 
 ---
 
-## 11. International Travel
+## 8. 고객 접대
 
-11.1. **Pre-Approval:** All international travel requires pre-approval from the department VP and notification to HR (for tax and compliance purposes).
+8.1. **1인당 한도:** 고객 접대 경비는 행사당 **1인 ₩150,000** 이내로 제한하며, 음식, 음료, 부가세, 봉사료를 포함합니다.
 
-11.2. **Currency Conversion:** Concur will automatically convert foreign currency expenses at the transaction date exchange rate. Do not manually convert.
+8.2. **증빙 서류:** 고객 접대 경비에는 다음 사항을 반드시 기재해야 합니다:
+   - 참석자 전원의 성명 및 직책
+   - 외부 참석자의 소속 회사명
+   - 식사/행사의 업무상 목적
+   - 항목별 영수증 (세금계산서 또는 카드매출전표)
 
-11.3. **Vaccinations & Visas:** Required vaccinations and visa fees for business travel are reimbursable. Submit through Concur with supporting documentation.
+8.3. **사전 승인:** 고객 접대 비용이 총 ₩500,000을 초과할 것으로 예상되는 경우 부서 이사급 사전 승인이 필요합니다.
 
-11.4. **Travel Insurance:** International travelers are automatically covered under the Acme Corp corporate travel insurance policy (provided by AIG). Contact HR for details and emergency assistance numbers.
+8.4. **주류:** 고객 접대 시 적정 수준의 주류 비용은 정산 가능합니다. 상식적인 수준을 유지하고, 주류 비용이 총 금액 대비 과도하지 않도록 주의해 주시기 바랍니다.
 
----
+8.5. **선물 정책:** 고객 선물은 수령인 1인당 연간 ₩100,000 이내로 제한합니다. 김영란법(부정청탁 및 금품등 수수의 금지에 관한 법률) 적용 대상자에 대한 선물은 법정 한도(₩50,000) 이내여야 합니다. 현금 또는 현금성 선물(상품권 등)은 세무 및 컴플라이언스 규정상 금지합니다.
 
-## 12. Exceptions & Appeals
-
-12.1. **Exception Requests:** Exceptions to this policy must be requested in writing via Concur's exception workflow and approved by the CFO.
-
-12.2. **Appeals:** Denied expense claims may be appealed within 14 days of rejection. Appeals are reviewed by the Finance Controller.
-
----
-
-## 13. Policy Violations
-
-13.1. Violations of this policy may result in:
-   - Denial of reimbursement
-   - Revocation of corporate card privileges
-   - Disciplinary action up to and including termination
-   - Required repayment of improperly claimed expenses
+8.6. **접대비 한도:** 부서별 월간 접대비 한도는 매 분기 초 재무팀에서 통보하며, 한도 초과 시 부사장급 승인이 필요합니다.
 
 ---
 
-## 14. Contact
+## 9. 컨퍼런스 및 직무 개발
 
-- **Expense Support:** expenses@acmecorp.com
-- **Concur Help:** concur-help@acmecorp.com or Slack #expense-help
-- **Travel Booking (Navan):** travel@acmecorp.com
-- **Corporate Card Issues:** amex-support@acmecorp.com
-- **Finance Team:** finance@acmecorp.com
+9.1. **사전 승인 필수:** 모든 컨퍼런스 참석은 직속 상관 및 부서장의 사전 승인을 받아야 합니다. 행사일 최소 **30일 전**에 요청을 제출하시기 바랍니다.
+
+9.2. **등록비:** 컨퍼런스 등록비는 해당 행사가 임직원의 직무 및 전문성 개발과 관련이 있는 경우 정산 가능합니다.
+
+9.3. **예산:** 각 부서는 연간 직무 개발 예산을 보유하고 있습니다. 등록 전에 관리자에게 가용 예산을 확인하시기 바랍니다.
+
+9.4. **출장 규정 적용:** 컨퍼런스 참석을 위한 출장에는 표준 출장 규정(제7.1조~제7.4조)이 동일하게 적용됩니다.
+
+9.5. **온라인 강의 및 자격증:** 사전 승인된 온라인 강의 수강료 및 자격증 시험 응시료는 연간 임직원 1인당 **₩3,000,000** 이내에서 정산 가능합니다.
+
+9.6. **보고 의무:** 컨퍼런스 참석 후 2주 이내에 참석 보고서를 작성하여 부서 내 공유해야 합니다.
 
 ---
 
-*This policy is reviewed annually by the Finance Department and updated to reflect current IRS rates and business requirements.*
+## 10. 정산 불가 항목
+
+다음 경비는 정산 **불가**합니다:
+
+- 출장 중 개인 오락 또는 관광 활동
+- 교통 위반 과태료 및 주차 위반 범칙금
+- 항공사 라운지 멤버십 (부사장급 이상 제외)
+- 여행자 보험 (법인카드 부가 서비스로 제공)
+- 의류 및 개인 미용 비용
+- 재택근무용 가구 (재택근무 정책의 별도 지원금 참조)
+- 개인 통신비 (승인된 BYOD 요금제 적용자 제외)
+- 일등석 항공료 (의료상 필요하고 진단서가 첨부된 경우 제외)
+- 배우자 또는 동반자의 여행 경비
+- 출장 중 헬스장 이용료 또는 운동 강습비
+- 세탁 및 드라이클리닝 비용 (연속 5박 이상 출장 시 제외)
+- 개인 마일리지 적립을 위한 추가 비용
+- 업무와 무관한 구독 서비스 비용
+
+---
+
+## 11. 해외 출장
+
+11.1. **사전 승인:** 모든 해외 출장은 부서 부사장의 사전 승인을 받아야 하며, 세무 및 컴플라이언스 목적으로 인사팀에도 통보해야 합니다.
+
+11.2. **환율 적용:** Concur는 거래일 기준 환율로 외화 경비를 자동 환산합니다. 수동으로 환산하지 마시기 바랍니다.
+
+11.3. **예방접종 및 비자:** 업무 출장에 필요한 예방접종 비용 및 비자 수수료는 정산 가능합니다. 관련 증빙 서류와 함께 Concur에 제출하시기 바랍니다.
+
+11.4. **해외 여행자 보험:** 해외 출장자는 메타코드 법인 해외여행자보험(삼성화재 제공)에 자동 가입됩니다. 상세 내용 및 긴급 연락처는 인사팀에 문의하시기 바랍니다.
+
+11.5. **해외 출장 일비:** 해외 출장 시 도시별 일비 기준은 Concur에 게시된 해외 출장 일비표를 따릅니다. 일비표에 없는 도시의 경우 재무팀에 사전 문의하시기 바랍니다.
+
+11.6. **로밍 및 통신:** 해외 출장 시 로밍 데이터 또는 현지 유심 비용은 1일 ₩15,000 이내에서 정산 가능합니다.
+
+---
+
+## 12. 예외 및 이의 신청
+
+12.1. **예외 요청:** 본 정책에 대한 예외 사항은 Concur의 예외 승인 워크플로를 통해 서면으로 요청해야 하며, CFO의 승인을 받아야 합니다.
+
+12.2. **이의 신청:** 경비 정산이 거부된 경우 거부일로부터 **14일 이내**에 이의를 신청할 수 있습니다. 이의 신청은 재무 컨트롤러가 검토합니다.
+
+12.3. **긴급 예외:** 천재지변, 항공 결항 등 불가항력 사유로 인한 추가 경비는 사유서와 함께 제출 시 예외 처리가 가능합니다.
+
+---
+
+## 13. 정책 위반
+
+13.1. 본 정책 위반 시 다음과 같은 조치가 취해질 수 있습니다:
+   - 경비 정산 거부
+   - 법인카드 사용 권한 정지 또는 회수
+   - 인사 징계 조치 (경고, 감봉, 해고 포함)
+   - 부당하게 청구된 경비의 환수
+   - 중대한 위반 시 법적 조치
+
+13.2. **감사:** 재무팀은 분기별로 경비 보고서에 대한 무작위 감사를 실시합니다. 감사 대상으로 선정된 임직원은 추가 증빙 자료를 요청받을 수 있습니다.
+
+---
+
+## 14. 연락처
+
+- **경비 정산 지원:** expenses@metacode.co.kr
+- **Concur 시스템 문의:** concur-help@metacode.co.kr 또는 Slack `#경비정산-문의`
+- **출장 예약 (Navan):** travel@metacode.co.kr 또는 Slack `#출장예약`
+- **법인카드 관련:** card-support@metacode.co.kr
+- **재무팀:** finance@metacode.co.kr 또는 Slack `#재무팀-문의`
+- **세무 관련 문의:** tax@metacode.co.kr
+
+---
+
+*본 정책은 재무팀에서 매년 검토하며, 현행 세법 및 업무 요건의 변경사항을 반영하여 개정합니다.*
