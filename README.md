@@ -6,8 +6,7 @@
 
 - **분량**: 21편 Core + 6편 Advanced = 총 27편
 - **시간**: Core 7시간 + Advanced 2시간 = 총 9시간
-- **편당**: 20분 (2분 인트로 + 6분 개념 + 10분 데모 + 2분 퀴즈/요약)
-- **캡스톤 프로젝트**: Internal Ops Assistant (사내 IT 운영 도우미)
+- **프로젝트**: Internal Ops Assistant (사내 IT 운영 도우미)
 
 ## 사전 요구사항
 
@@ -94,7 +93,7 @@ mcp-course/
 │       ├── ep07-slides.md
 │       ├── ep08-slides.md
 │       └── ep09-slides.md
-├── project/                     # 캡스톤 완성본
+├── project/                     # 프로젝트 완성본
 │   ├── pyproject.toml
 │   ├── .env.example
 │   ├── src/
@@ -136,8 +135,6 @@ mcp-course/
 
 ## 커리큘럼 요약
 
-전체 커리큘럼은 [curriculum.md](./curriculum.md)를 참조하세요.
-
 | 모듈 | 편수 | 시간 | 주제 |
 |------|------|------|------|
 | **Chapter 1** | EP 01-03 | 1시간 | MCP 기초 — 개념, 아키텍처, 첫 서버 |
@@ -148,22 +145,7 @@ mcp-course/
 
 ## 스타터킷 사용법
 
-수강생은 `starter-kit/` 디렉토리를 복사하여 시작합니다.
-
-macOS/Linux:
-```bash
-cp -r starter-kit/ my-ops-assistant/
-cd my-ops-assistant
-uv sync
-```
-
-Windows (PowerShell):
-```powershell
-Copy-Item -Recurse starter-kit\ my-ops-assistant\
-cd my-ops-assistant
-uv sync
-```
-
+수강생은 `starter-kit/` 디렉토리에서 작업을 진행하시면됩니다. 
 각 에피소드의 강의 노트에서 `# TODO` 주석을 찾아 코드를 채워나가는 방식으로 실습합니다. 완성본은 `project/` 디렉토리에서 확인할 수 있습니다.
 
 ## 라이선스
