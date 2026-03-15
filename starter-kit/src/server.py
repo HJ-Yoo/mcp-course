@@ -23,7 +23,7 @@ def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--transport", choices=["stdio", "streamable-http"], default="stdio")
     parser.add_argument("--host", default="0.0.0.0")
-    parser.add_argument("--port", type=int, default=8000)
+    parser.add_argument("--port", type=int, default=8080)
     args = parser.parse_args()
 
     # TODO (Episode 4): Add transport selection logic
