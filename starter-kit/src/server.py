@@ -14,7 +14,7 @@ mcp = FastMCP("internal-ops-assistant")
 
 # TODO (Episode 5): Register lookup_inventory tool
 # TODO (Episode 7): Register search_policy tool
-# TODO (Episode 9): Register create_ticket tool
+# TODO (Episode 8): Register create_ticket tool
 # TODO (Episode 11): Register policy resources
 # TODO (Episode 13): Register prompt templates
 

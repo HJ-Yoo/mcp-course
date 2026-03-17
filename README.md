@@ -79,8 +79,8 @@ mcp-course/
 │       ├── ep05-inventory-tool.md
 │       ├── ep06-error-handling.md
 │       ├── ep07-policy-tool.md
-│       ├── ep08-validation.md
-│       └── ep09-ticket-tool.md
+│       ├── ep08-ticket-tool.md
+│       └── ep09-validation.md
 ├── slides/                      # 에피소드별 슬라이드 (Marp)
 │   ├── chapter-1/
 │   │   ├── ep01-slides.md
