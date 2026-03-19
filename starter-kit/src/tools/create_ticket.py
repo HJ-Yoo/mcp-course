@@ -1,4 +1,4 @@
-"""TODO (Episode 9-10): Implement ticket creation tool."""
+"""TODO (Episode 8): Implement ticket creation tool."""
 from __future__ import annotations
 
 def register(mcp):

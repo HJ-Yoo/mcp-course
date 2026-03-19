@@ -14,7 +14,7 @@ from pathlib import Path
 class ErrorCode(str, Enum):
     NOT_FOUND = "NOT_FOUND"
     INVALID_ARGUMENT = "INVALID_ARGUMENT"
-    # TODO (Episode 8): Add remaining error codes
+    # TODO (Episode 9): Add remaining error codes
 
 
 class ToolError(Exception):
@@ -36,14 +36,14 @@ class InventoryItem:
 
 
 # TODO (Episode 7): Define PolicyDoc dataclass
-# TODO (Episode 9): Define Ticket dataclass
+# TODO (Episode 8): Define Ticket dataclass
 
 
 @dataclass
 class AppContext:
     db: sqlite3.Connection
     # TODO (Episode 7): Add policies field
-    # TODO (Episode 9): Add tickets_file field
+    # TODO (Episode 8): Add tickets_file field
     # TODO (Episode 14): Add audit_log_path field
 
     @classmethod
