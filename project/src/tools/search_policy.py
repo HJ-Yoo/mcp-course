@@ -16,7 +16,7 @@ from mcp.server.fastmcp import Context
 
 from src.audit import AuditLogger
 from src.models import AppContext
-from src.validation import sanitize_query
+from src.validation import validate_query
 
 
 # ---------------------------------------------------------------------------
@@ -93,7 +93,7 @@ def register(mcp) -> None:
         app: AppContext = ctx.request_context.lifespan_context["app"]
         logger = AuditLogger(app.audit_log_path)
 
-        sanitized = sanitize_query(query)
+        sanitized = validate_query(query)
 
         results: list[dict] = []
         for doc in app.policies:

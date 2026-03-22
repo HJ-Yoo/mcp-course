@@ -7,12 +7,13 @@ without spinning up the full MCP server.
 
 from __future__ import annotations
 
+import re
 import sqlite3
 
 import pytest
 
 from src.models import ErrorCode, ToolError
-from src.validation import sanitize_query
+from src.validation import validate_query
 
 
 # ---------------------------------------------------------------------------
@@ -21,7 +22,8 @@ from src.validation import sanitize_query
 
 def search_inventory_db(db: sqlite3.Connection, query: str) -> list[dict]:
     """Reproduce the search logic used by the lookup_inventory tool."""
-    sanitized = sanitize_query(query)
+    validated = validate_query(query)
+    sanitized = re.sub(r"\s+", " ", validated).lower()
     like_pattern = f"%{sanitized}%"
     rows = db.execute(
         """SELECT item_id, name, category, quantity,
@@ -67,13 +69,13 @@ class TestInventorySearch:
     def test_empty_query_raises_tool_error(self) -> None:
         """An empty query string raises ToolError with INVALID_ARGUMENT."""
         with pytest.raises(ToolError) as exc_info:
-            sanitize_query("")
+            validate_query("")
         assert exc_info.value.code == ErrorCode.INVALID_ARGUMENT
 
     def test_whitespace_only_query_raises_tool_error(self) -> None:
         """A whitespace-only query raises ToolError."""
         with pytest.raises(ToolError) as exc_info:
-            sanitize_query("   ")
+            validate_query("   ")
         assert exc_info.value.code == ErrorCode.INVALID_ARGUMENT
 
     def test_query_with_extra_spaces(self, sample_db: sqlite3.Connection) -> None:
