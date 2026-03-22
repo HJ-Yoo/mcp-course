@@ -14,7 +14,7 @@ from mcp.server.fastmcp import Context
 
 from src.audit import AuditLogger
 from src.models import AppContext, Ticket
-from src.validation import validate_priority, validate_text_length
+from src.validation import validate_ticket_input
 
 
 def register(mcp) -> None:
@@ -54,9 +54,10 @@ def register(mcp) -> None:
         logger = AuditLogger(app.audit_log_path)
 
         # Validate inputs
-        validated_priority = validate_priority(priority)
-        validated_title = validate_text_length(title, "title", max_len=200)
-        validated_body = validate_text_length(body, "body", max_len=500)
+        validated = validate_ticket_input(title, body, priority)
+        validated_title = validated["title"]
+        validated_body = validated["description"]
+        validated_priority = validated["priority"]
 
         # Preview mode
         if not confirm:

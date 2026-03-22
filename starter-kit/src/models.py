@@ -61,3 +61,16 @@ class AppContext:
         db = sqlite3.connect(":memory:")
         db.row_factory = sqlite3.Row
         return db
+
+    # TODO (Episode 8): Add tickets helpers (load_tickets, next_ticket_id, append_ticket)
+    def load_tickets(self) -> list[Ticket]:
+        tickets: list[Ticket] = []
+
+        return tickets
+        
+    def next_ticket_id(self) -> str:
+        pass
+        
+    def append_ticket(self, ticket: Ticket) -> None:
+        pass
+        

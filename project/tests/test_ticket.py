@@ -13,19 +13,18 @@ import pytest
 
 from src.audit import AuditLogger
 from src.models import AppContext, ErrorCode, Ticket, ToolError
-from src.validation import validate_priority, validate_text_length
+from src.validation import validate_ticket_input
 
 
 # ---------------------------------------------------------------------------
 # Helpers: mimic the core create_ticket logic without MCP context
 # ---------------------------------------------------------------------------
 
-def preview_ticket(title: str, priority: str) -> str:
+def preview_ticket(title: str, body: str, priority: str) -> str:
     """Reproduce the preview logic of create_ticket (confirm=False)."""
-    validated_priority = validate_priority(priority)
-    validated_title = validate_text_length(title, "title", max_len=200)
+    validated = validate_ticket_input(title, body, priority)
     return (
-        f"Preview: Ticket '{validated_title}' (priority: {validated_priority}). "
+        f"Preview: Ticket '{validated['title']}' (priority: {validated['priority']}). "
         f"Set confirm=True to create."
     )
 
@@ -38,9 +37,10 @@ def create_ticket_logic(
     idempotency_key: str | None = None,
 ) -> dict:
     """Reproduce the creation logic of create_ticket (confirm=True)."""
-    validated_priority = validate_priority(priority)
-    validated_title = validate_text_length(title, "title", max_len=200)
-    validated_body = validate_text_length(body, "body", max_len=500)
+    validated = validate_ticket_input(title, body, priority)
+    validated_title = validated["title"]
+    validated_body = validated["description"]
+    validated_priority = validated["priority"]
 
     # Idempotency check
     if idempotency_key:
@@ -75,7 +75,7 @@ class TestTicketPreview:
 
     def test_preview_returns_summary(self) -> None:
         """Preview mode returns a human-readable summary with the title and priority."""
-        result = preview_ticket("Server is down", "high")
+        result = preview_ticket("Server is down", "The server is completely unresponsive", "high")
         assert "Preview:" in result
         assert "Server is down" in result
         assert "high" in result
@@ -83,7 +83,7 @@ class TestTicketPreview:
 
     def test_preview_normalizes_priority(self) -> None:
         """Preview normalizes priority to lowercase."""
-        result = preview_ticket("Test issue", "HIGH")
+        result = preview_ticket("Test issue here", "This is a test issue description", "HIGH")
         assert "high" in result
 
 
@@ -174,25 +174,29 @@ class TestTicketValidation:
     def test_invalid_priority_raises_error(self) -> None:
         """An invalid priority value raises ToolError with INVALID_ARGUMENT."""
         with pytest.raises(ToolError) as exc_info:
-            validate_priority("urgent")
+            validate_ticket_input("Valid title", "Valid description here", "urgent")
         assert exc_info.value.code == ErrorCode.INVALID_ARGUMENT
 
     def test_empty_title_raises_error(self) -> None:
         """An empty title raises ToolError."""
         with pytest.raises(ToolError) as exc_info:
-            validate_text_length("", "title", max_len=200)
+            validate_ticket_input("", "Valid description here", "medium")
         assert exc_info.value.code == ErrorCode.INVALID_ARGUMENT
 
-    def test_title_too_long_raises_error(self) -> None:
-        """A title exceeding max length raises ToolError."""
-        long_title = "x" * 201
+    def test_short_title_raises_error(self) -> None:
+        """A title shorter than 5 chars raises ToolError."""
         with pytest.raises(ToolError) as exc_info:
-            validate_text_length(long_title, "title", max_len=200)
+            validate_ticket_input("Hi", "Valid description here", "medium")
         assert exc_info.value.code == ErrorCode.INVALID_ARGUMENT
 
-    def test_body_too_long_raises_error(self) -> None:
-        """A body exceeding max length raises ToolError."""
-        long_body = "y" * 501
+    def test_short_description_raises_error(self) -> None:
+        """A description shorter than 10 chars raises ToolError."""
         with pytest.raises(ToolError) as exc_info:
-            validate_text_length(long_body, "body", max_len=500)
+            validate_ticket_input("Valid title", "Short", "medium")
         assert exc_info.value.code == ErrorCode.INVALID_ARGUMENT
+
+    def test_long_title_truncated(self) -> None:
+        """A title exceeding max length is truncated by sanitize_string."""
+        long_title = "x" * 300
+        result = validate_ticket_input(long_title, "Valid description here", "medium")
+        assert len(result["title"]) == 200

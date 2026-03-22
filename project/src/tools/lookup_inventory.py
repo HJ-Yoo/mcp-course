@@ -7,12 +7,13 @@ Searches the inventory by name or category using SQL LIKE pattern matching.
 from __future__ import annotations
 
 import json
+import re
 
 from mcp.server.fastmcp import Context
 
 from src.audit import AuditLogger
 from src.models import AppContext
-from src.validation import sanitize_query
+from src.validation import validate_query
 
 MAX_RESULTS = 10
 
@@ -37,7 +38,8 @@ def register(mcp) -> None:
         app: AppContext = ctx.request_context.lifespan_context["app"]
         logger = AuditLogger(app.audit_log_path)
 
-        sanitized = sanitize_query(query)
+        validated = validate_query(query, min_length=1, max_length=100)
+        sanitized = re.sub(r"\s+", " ", validated).lower()
         like_pattern = f"%{sanitized}%"
 
         rows = app.db.execute(
