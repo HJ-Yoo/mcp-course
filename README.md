@@ -145,7 +145,7 @@ mcp-course/
 
 ## 스타터킷 사용법
 
-수강생은 `starter-kit/` 디렉토리에서 작업을 진행하시면됩니다. 
+수강생은 우측 상단에 `use this template` > `Create a new repository` 후 `starter-kit/` 디렉토리에서 작업을 진행하시면됩니다. 
 각 에피소드의 강의 노트에서 `# TODO` 주석을 찾아 코드를 채워나가는 방식으로 실습합니다. 완성본은 `project/` 디렉토리에서 확인할 수 있습니다.
 
 ## 라이선스
