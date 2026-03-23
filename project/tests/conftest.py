@@ -145,21 +145,19 @@ def app_context(
     tickets_file = tmp_path / "tickets" / "tickets.jsonl"
     tickets_file.parent.mkdir(parents=True, exist_ok=True)
 
-    audit_log_path = tmp_path / "logs" / "audit.jsonl"
-    audit_log_path.parent.mkdir(parents=True, exist_ok=True)
-
     policy_dir = tmp_path / "policies"
+    audit_logger = AuditLogger(log_dir=tmp_path / "logs")
 
     return AppContext(
         db=sample_db,
         policies=sample_policies,
         policy_dir=policy_dir,
         tickets_file=tickets_file,
-        audit_log_path=audit_log_path,
+        audit_logger=audit_logger,
     )
 
 
 @pytest.fixture
 def audit_logger(tmp_path: Path) -> AuditLogger:
-    """AuditLogger that writes to a temporary file."""
-    return AuditLogger(tmp_path / "logs" / "test_audit.jsonl")
+    """AuditLogger that writes to a temporary directory."""
+    return AuditLogger(log_dir=tmp_path / "logs")

@@ -11,7 +11,6 @@ import re
 
 from mcp.server.fastmcp import Context
 
-from src.audit import AuditLogger
 from src.models import AppContext
 from src.validation import validate_query
 
@@ -36,7 +35,7 @@ def register(mcp) -> None:
             JSON array of matching inventory items, or a message if none found.
         """
         app: AppContext = ctx.request_context.lifespan_context["app"]
-        logger = AuditLogger(app.audit_log_path)
+        logger = app.audit_logger
 
         validated = validate_query(query, min_length=1, max_length=100)
         sanitized = re.sub(r"\s+", " ", validated).lower()
@@ -53,7 +52,7 @@ def register(mcp) -> None:
 
         if not rows:
             result = f"No items found matching '{sanitized}'"
-            logger.log(
+            await logger.log(
                 action="lookup",
                 tool_name="lookup_inventory",
                 input_summary=f"query={sanitized}",
@@ -68,7 +67,7 @@ def register(mcp) -> None:
             indent=2,
         )
 
-        logger.log(
+        await logger.log(
             action="lookup",
             tool_name="lookup_inventory",
             input_summary=f"query={sanitized}",

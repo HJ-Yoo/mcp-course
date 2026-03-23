@@ -12,7 +12,6 @@ from datetime import datetime, timezone
 
 from mcp.server.fastmcp import Context
 
-from src.audit import AuditLogger
 from src.models import AppContext, Ticket
 from src.validation import validate_ticket_input
 
@@ -51,7 +50,7 @@ def register(mcp) -> None:
             Preview text (if confirm=False) or JSON of the created ticket.
         """
         app: AppContext = ctx.request_context.lifespan_context["app"]
-        logger = AuditLogger(app.audit_log_path)
+        logger = app.audit_logger
 
         # Validate inputs
         validated = validate_ticket_input(title, body, priority)
@@ -65,7 +64,7 @@ def register(mcp) -> None:
                 f"Preview: Ticket '{validated_title}' (priority: {validated_priority}). "
                 f"Set confirm=True to create."
             )
-            logger.log(
+            await logger.log(
                 action="preview",
                 tool_name="create_ticket",
                 input_summary=f"title={validated_title}, priority={validated_priority}",
@@ -80,7 +79,7 @@ def register(mcp) -> None:
             for ticket in existing_tickets:
                 if ticket.idempotency_key == idempotency_key:
                     result_json = json.dumps(asdict(ticket), ensure_ascii=False, indent=2)
-                    logger.log(
+                    await logger.log(
                         action="idempotent_return",
                         tool_name="create_ticket",
                         input_summary=f"idempotency_key={idempotency_key}",

@@ -44,7 +44,7 @@ class AppContext:
     db: sqlite3.Connection
     # TODO (Episode 7): Add policies field
     # TODO (Episode 8): Add tickets_file field
-    # TODO (Episode 14): Add audit_log_path field
+    # TODO (Episode 14): Add audit_logger: AuditLogger field
 
     @classmethod
     def load(cls, base_dir: Path | None = None) -> "AppContext":

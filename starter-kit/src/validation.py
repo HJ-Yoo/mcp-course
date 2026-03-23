@@ -52,5 +52,13 @@ def validate_query(
 
 def validate_doc_id(doc_id: str) -> str:
     # TODO: 빈 값 검사
-    # TODO: 영숫자 + 하이픈만 허용 (regex whitelist)
+    # TODO: 소문자 알파벳, 숫자, 하이픈만 허용 (1~50자)
+    # TODO: regex pattern: r'^[a-z0-9]([a-z0-9\-]{0,48}[a-z0-9])?$'
     return doc_id
+
+
+def safe_resolve_policy_path(doc_id: str, policy_dir):
+    # TODO: validate_doc_id로 입력 형식 검증 (Layer 1)
+    # TODO: (policy_dir / f"{doc_id}.md").resolve() 경로 생성
+    # TODO: resolved 경로가 policy_dir 내부인지 확인 (Layer 2)
+    pass

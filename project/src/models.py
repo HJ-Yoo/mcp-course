@@ -12,9 +12,10 @@ import json
 import re
 import sqlite3
 from dataclasses import dataclass, field
-from datetime import datetime, timezone
 from enum import Enum
 from pathlib import Path
+
+from src.audit import AuditLogger
 
 
 # ---------------------------------------------------------------------------
@@ -83,7 +84,7 @@ class AppContext:
     policies: list[PolicyDoc]
     policy_dir: Path
     tickets_file: Path
-    audit_log_path: Path
+    audit_logger: AuditLogger
 
     # ------------------------------------------------------------------
     # Factory
@@ -100,15 +101,14 @@ class AppContext:
         tickets_file = data_dir / "tickets" / "tickets.jsonl"
         tickets_file.parent.mkdir(parents=True, exist_ok=True)
 
-        audit_log_path = base / "logs" / "audit.jsonl"
-        audit_log_path.parent.mkdir(parents=True, exist_ok=True)
+        audit_logger = AuditLogger(log_dir=base / "logs")
 
         return cls(
             db=db,
             policies=policies,
             policy_dir=policy_dir,
             tickets_file=tickets_file,
-            audit_log_path=audit_log_path,
+            audit_logger=audit_logger,
         )
 
     # ------------------------------------------------------------------

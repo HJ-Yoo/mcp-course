@@ -4,6 +4,7 @@ Prompts: templates
 Pre-built prompt templates for common operational workflows:
 - incident_report: structured incident report generation
 - policy_answer: answer questions based on policy documents
+- ticket_summary: ticket type-specific writing guide
 """
 
 from __future__ import annotations
@@ -14,70 +15,43 @@ def register(mcp) -> None:
 
     @mcp.prompt()
     async def incident_report(issue: str, affected_system: str) -> str:
-        """Generate a structured incident report.
+        """IT 인시던트 리포트를 생성합니다."""
+        return f"""You are an IT incident response specialist.
 
-        Produces a prompt that guides the LLM to create a comprehensive
-        incident report covering summary, impact, reproduction steps,
-        and recommended actions.
+Create a structured incident report:
+- Issue: {issue}
+- Affected System: {affected_system}
 
-        Args:
-            issue: Description of the incident or issue.
-            affected_system: The system or service affected by the incident.
+Include: Summary, Impact, Steps to Reproduce,
+Recommended Actions, Priority Level.
 
-        Returns:
-            A structured prompt template for incident report generation.
-        """
-        return (
-            f"Please generate a structured incident report based on the following details.\n"
-            f"\n"
-            f"**Issue:** {issue}\n"
-            f"**Affected System:** {affected_system}\n"
-            f"\n"
-            f"Use the following format:\n"
-            f"\n"
-            f"## Summary\n"
-            f"Provide a concise summary of the incident (2-3 sentences).\n"
-            f"\n"
-            f"## Affected System\n"
-            f"Identify the affected system, its dependencies, and scope of impact.\n"
-            f"\n"
-            f"## Impact Assessment\n"
-            f"Describe the business impact: severity level, number of users affected, "
-            f"and any SLA implications.\n"
-            f"\n"
-            f"## Steps to Reproduce\n"
-            f"List the steps that lead to the issue, if applicable.\n"
-            f"\n"
-            f"## Recommended Actions\n"
-            f"Provide immediate mitigation steps and longer-term fixes.\n"
-        )
+Write in Korean."""
 
     @mcp.prompt()
     async def policy_answer(question: str, doc_id: str) -> str:
-        """Answer a question based on a specific policy document.
+        """정책 문서 기반 질문 답변"""
+        return f"""Answer based strictly on
+the policy document (policy://{doc_id}).
 
-        Produces a prompt instructing the LLM to answer the question using
-        only information from the referenced policy, citing relevant sections.
+Question: {question}
 
-        Args:
-            question: The user's question about the policy.
-            doc_id: The identifier of the policy document to reference.
+Rules:
+- Only use information from the policy document
+- Cite specific sections
+- If not in document, say so"""
 
-        Returns:
-            A prompt template that instructs the LLM to answer from policy content.
-        """
-        return (
-            f"Answer the following question based **only** on the content of "
-            f"policy document `{doc_id}`. If the answer is not found in the policy, "
-            f"say so explicitly.\n"
-            f"\n"
-            f"**Question:** {question}\n"
-            f"\n"
-            f"Instructions:\n"
-            f"1. Read the policy document using resource `policy://{doc_id}`.\n"
-            f"2. Find the relevant section(s) that address the question.\n"
-            f"3. Provide a clear, concise answer.\n"
-            f"4. Cite the specific section title or heading where you found the information.\n"
-            f"5. If the policy does not cover this topic, state: "
-            f"\"This topic is not covered in the referenced policy.\"\n"
-        )
+    @mcp.prompt()
+    async def ticket_summary(ticket_type: str) -> str:
+        """티켓 유형별 작성 가이드를 제공합니다."""
+        guides = {
+            "incident": """인시던트 티켓 작성 가이드:
+          1. 문제 설명, 2. 영향 범위, 3. 시작 시점,
+          4. 재현 방법, 5. 우선순위""",
+            "request": """서비스 요청 작성 가이드:
+          1. 요청 내용, 2. 사유, 3. 희망 일정,
+          4. 승인 필요 여부""",
+            "change": """변경 요청 작성 가이드:
+          1. 변경 내용, 2. 변경 사유, 3. 영향 분석,
+          4. 롤백 계획, 5. 희망 일정""",
+        }
+        return guides.get(ticket_type, "Unknown type")
