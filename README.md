@@ -2,11 +2,12 @@
 
 > MCP(Model Context Protocol)를 활용한 실전 온라인 강의
 
-## 과정 개요
 
-- **분량**: 21편 Core + 6편 Advanced = 총 27편
-- **시간**: Core 7시간 + Advanced 2시간 = 총 9시간
-- **프로젝트**: Internal Ops Assistant (사내 IT 운영 도우미)
+## 수강생 필독! starter-kit 사용법
+
+수강생은 우측 상단에 `use this template` > `Create a new repository`를 선택하셔서 각자 계정 하에 repo를 만드시고, 
+이후 `starter-kit/` 디렉토리에서 작업을 진행하시면됩니다. 
+각 에피소드의 강의 노트에서 `# TODO` 주석을 찾아 코드를 채워나가는 방식으로 실습합니다. 완성본은 `project/` 디렉토리에서 확인할 수 있습니다.
 
 ## 사전 요구사항
 
@@ -142,12 +143,6 @@ mcp-course/
 | **Chapter 3** | EP 10-16 | 2시간 20분 | Resources & Prompts — 데이터 노출, 템플릿, 테스트 |
 | **Chapter 4** | EP 17-21 | 1시간 40분 | 통합 & 테스트 — Transport, 클라이언트 연동, 캡스톤 |
 | **Chapter 5** | EP 22-27 | 2시간 | Advanced — 인증, Docker, 모니터링, 프로덕션 |
-
-## 스타터킷 사용법
-
-수강생은 우측 상단에 `use this template` > `Create a new repository`를 선택하셔서 각자 계정 하에 repo를 만드시고, 
-이후 `starter-kit/` 디렉토리에서 작업을 진행하시면됩니다. 
-각 에피소드의 강의 노트에서 `# TODO` 주석을 찾아 코드를 채워나가는 방식으로 실습합니다. 완성본은 `project/` 디렉토리에서 확인할 수 있습니다.
 
 ## 라이선스
 
