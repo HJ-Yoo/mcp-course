@@ -14,7 +14,6 @@ import re
 import yaml
 from mcp.server.fastmcp import Context
 
-from src.audit import AuditLogger
 from src.models import AppContext
 from src.validation import validate_query
 
@@ -91,7 +90,7 @@ def register(mcp) -> None:
             query: 검색 키워드 (예: "VPN", "재택근무", "비밀번호")
         """
         app: AppContext = ctx.request_context.lifespan_context["app"]
-        logger = AuditLogger(app.audit_log_path)
+        logger = app.audit_logger
 
         sanitized = validate_query(query)
 
@@ -131,7 +130,7 @@ def register(mcp) -> None:
 
         result_json = json.dumps(response, ensure_ascii=False, indent=2)
 
-        logger.log(
+        await logger.log(
             action="search",
             tool_name="search_policy",
             input_summary=f"query={sanitized}",

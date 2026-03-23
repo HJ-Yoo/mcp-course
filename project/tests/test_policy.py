@@ -30,21 +30,29 @@ def build_policy_index(policies: list[PolicyDoc]) -> list[dict]:
     ]
 
 
-def get_policy_content(policies: list[PolicyDoc], doc_id: str) -> str:
+def get_policy_content(policies: list[PolicyDoc], doc_id: str) -> dict:
     """Reproduce the logic of the policy://{doc_id} resource."""
     validated_id = validate_doc_id(doc_id)
-    for doc in policies:
-        if doc.doc_id == validated_id:
-            if not doc.path.exists():
-                raise ToolError(
-                    ErrorCode.NOT_FOUND,
-                    f"Policy file for '{validated_id}' not found on disk.",
-                )
-            return doc.path.read_text(encoding="utf-8")
-    raise ToolError(
-        ErrorCode.NOT_FOUND,
-        f"No policy document found with ID '{validated_id}'.",
+    policy = next(
+        (p for p in policies if p.doc_id == validated_id),
+        None,
     )
+    if policy is None:
+        raise ToolError(
+            ErrorCode.NOT_FOUND,
+            f"No policy document found with ID '{validated_id}'.",
+        )
+    if not policy.path.exists():
+        raise ToolError(
+            ErrorCode.NOT_FOUND,
+            f"Policy file for '{validated_id}' not found on disk.",
+        )
+    content = policy.path.read_text(encoding="utf-8")
+    return {
+        "doc_id": policy.doc_id,
+        "title": policy.title,
+        "content": content,
+    }
 
 
 # ---------------------------------------------------------------------------
@@ -83,10 +91,11 @@ class TestPolicyDetail:
     """Tests for the policy detail resource."""
 
     def test_detail_returns_content(self, sample_policies: list[PolicyDoc]) -> None:
-        """Retrieving a valid doc_id returns its markdown content."""
-        content = get_policy_content(sample_policies, "remote-work")
-        assert "Remote Work Policy" in content
-        assert "Eligibility" in content
+        """Retrieving a valid doc_id returns JSON with doc_id, title, content."""
+        result = get_policy_content(sample_policies, "remote-work")
+        assert result["doc_id"] == "remote-work"
+        assert result["title"] == "Remote Work Policy"
+        assert "Eligibility" in result["content"]
 
     def test_detail_not_found(self, sample_policies: list[PolicyDoc]) -> None:
         """Requesting a non-existent doc_id raises ToolError NOT_FOUND."""

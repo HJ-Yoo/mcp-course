@@ -118,8 +118,8 @@ class TestTicketCreation:
 
     def test_sequential_ticket_ids(self, app_context: AppContext) -> None:
         """Successive ticket creations produce incrementing IDs."""
-        t1 = create_ticket_logic(app_context, "First", "Body one", "low")
-        t2 = create_ticket_logic(app_context, "Second", "Body two", "medium")
+        t1 = create_ticket_logic(app_context, "First issue", "Body of the first ticket", "low")
+        t2 = create_ticket_logic(app_context, "Second issue", "Body of the second ticket", "medium")
 
         id1 = int(t1["ticket_id"].split("-")[1])
         id2 = int(t2["ticket_id"].split("-")[1])
@@ -154,17 +154,17 @@ class TestTicketIdempotency:
     def test_different_keys_create_different_tickets(self, app_context: AppContext) -> None:
         """Different idempotency keys create separate tickets."""
         t1 = create_ticket_logic(
-            app_context, "Issue A", "Body A", "low", idempotency_key="key-a"
+            app_context, "Issue Alpha", "Body of issue alpha", "low", idempotency_key="key-a"
         )
         t2 = create_ticket_logic(
-            app_context, "Issue B", "Body B", "low", idempotency_key="key-b"
+            app_context, "Issue Bravo", "Body of issue bravo", "low", idempotency_key="key-b"
         )
         assert t1["ticket_id"] != t2["ticket_id"]
 
     def test_no_key_always_creates_new(self, app_context: AppContext) -> None:
         """Without an idempotency key, each call creates a new ticket."""
-        t1 = create_ticket_logic(app_context, "Issue X", "Body X", "low")
-        t2 = create_ticket_logic(app_context, "Issue X", "Body X", "low")
+        t1 = create_ticket_logic(app_context, "Issue X-ray", "Body of issue x-ray", "low")
+        t2 = create_ticket_logic(app_context, "Issue X-ray", "Body of issue x-ray", "low")
         assert t1["ticket_id"] != t2["ticket_id"]
 
 

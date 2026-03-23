@@ -169,9 +169,9 @@ def validate_query(
 
 
 def validate_doc_id(doc_id: str) -> str:
-    """문서 ID를 검증합니다: 영숫자와 하이픈만 허용.
+    """문서 ID를 검증합니다: 소문자 알파벳, 숫자, 하이픈만 허용 (1~50자).
 
-    Path traversal 공격을 방지합니다.
+    Path traversal 공격을 방지하는 화이트리스트 검증.
 
     Args:
         doc_id: 검증할 문서 ID.
@@ -188,9 +188,36 @@ def validate_doc_id(doc_id: str) -> str:
             ErrorCode.INVALID_ARGUMENT,
             "Document ID must not be empty.",
         )
-    if not re.match(r"^[a-zA-Z0-9-]+$", stripped):
+    pattern = r'^[a-z0-9]([a-z0-9\-]{0,48}[a-z0-9])?$'
+    if not re.match(pattern, stripped):
         raise ToolError(
             ErrorCode.INVALID_ARGUMENT,
-            f"Invalid document ID '{doc_id}'. Only alphanumeric characters and hyphens are allowed.",
+            f"Invalid doc_id: '{doc_id}'. Only lowercase letters, numbers, hyphens allowed.",
         )
     return stripped
+
+
+def safe_resolve_policy_path(doc_id: str, policy_dir: Path) -> Path:
+    """문서 ID를 검증하고 안전한 파일 경로를 반환합니다.
+
+    Defense in depth: Layer 1 (입력 형식 검증) + Layer 2 (경로 resolve 검증).
+
+    Args:
+        doc_id: 검증할 문서 ID.
+        policy_dir: 정책 문서 디렉토리.
+
+    Returns:
+        검증된 파일 경로.
+
+    Raises:
+        ToolError: 경로가 허용 범위를 벗어나는 경우.
+    """
+    validate_doc_id(doc_id)  # Layer 1
+
+    file_path = (policy_dir / f"{doc_id}.md").resolve()
+    policy_dir_resolved = policy_dir.resolve()
+
+    if not str(file_path).startswith(str(policy_dir_resolved)):
+        raise ToolError(ErrorCode.INVALID_ARGUMENT, "Path traversal detected!")
+
+    return file_path
