@@ -94,8 +94,8 @@ class TestPolicyDetail:
         """Retrieving a valid doc_id returns JSON with doc_id, title, content."""
         result = get_policy_content(sample_policies, "remote-work")
         assert result["doc_id"] == "remote-work"
-        assert result["title"] == "Remote Work Policy"
-        assert "Eligibility" in result["content"]
+        assert result["title"] == "재택근무 정책"
+        assert "자격 요건" in result["content"]
 
     def test_detail_not_found(self, sample_policies: list[PolicyDoc]) -> None:
         """Requesting a non-existent doc_id raises ToolError NOT_FOUND."""
