@@ -77,58 +77,56 @@ def sample_db(sample_inventory: list[InventoryItem]) -> sqlite3.Connection:
 
 @pytest.fixture
 def sample_policies(tmp_path: Path) -> list[PolicyDoc]:
-    """Two temporary policy markdown files with front-matter."""
+    """임시 마크다운 파일로 정책 문서 2개 생성."""
     policy_dir = tmp_path / "policies"
     policy_dir.mkdir()
 
-    # Policy 1
+    # 정책 1: 재택근무
     remote_work = policy_dir / "remote-work.md"
     remote_work.write_text(
         "---\n"
-        "title: Remote Work Policy\n"
+        "title: 재택근무 정책\n"
         "tags: [remote, hr, work-from-home]\n"
         "---\n"
         "\n"
-        "# Remote Work Policy\n"
+        "# 재택근무 정책\n"
         "\n"
-        "## Eligibility\n"
-        "All full-time employees who have completed their probation period "
-        "are eligible for remote work.\n"
+        "## 자격 요건\n"
+        "수습 기간을 완료한 모든 정규직 직원이 재택근무 대상입니다.\n"
         "\n"
-        "## Equipment\n"
-        "The company provides a laptop and monitor for remote workers.\n",
+        "## 장비 지원\n"
+        "회사에서 노트북과 모니터를 지급합니다.\n",
         encoding="utf-8",
     )
 
-    # Policy 2
+    # 정책 2: 보안 가이드라인
     security = policy_dir / "security-guidelines.md"
     security.write_text(
         "---\n"
-        "title: Security Guidelines\n"
+        "title: 보안 가이드라인\n"
         "tags: [security, it, compliance]\n"
         "---\n"
         "\n"
-        "# Security Guidelines\n"
+        "# 보안 가이드라인\n"
         "\n"
-        "## Password Policy\n"
-        "All passwords must be at least 12 characters and include uppercase, "
-        "lowercase, numbers, and special characters.\n"
+        "## 비밀번호 정책\n"
+        "비밀번호는 최소 12자 이상, 대소문자·숫자·특수문자를 포함해야 합니다.\n"
         "\n"
-        "## VPN Usage\n"
-        "Employees must use the company VPN when accessing internal resources.\n",
+        "## VPN 사용\n"
+        "사내 시스템 접근 시 반드시 VPN을 사용해야 합니다.\n",
         encoding="utf-8",
     )
 
     return [
         PolicyDoc(
             doc_id="remote-work",
-            title="Remote Work Policy",
+            title="재택근무 정책",
             path=remote_work,
             tags=["remote", "hr", "work-from-home"],
         ),
         PolicyDoc(
             doc_id="security-guidelines",
-            title="Security Guidelines",
+            title="보안 가이드라인",
             path=security,
             tags=["security", "it", "compliance"],
         ),
