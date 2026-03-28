@@ -5,10 +5,10 @@ This provides a complete demo of the MCP flow:
   User message → LLM (Claude / GPT) → MCP tool calls → Results → LLM response
 
 Features:
-  - Chat interface with multi-LLM backend (Anthropic, OpenAI)
+  - Chat interface with multi-LLM backend (Anthropic, OpenAI, Google Gemini)
   - Real-time MCP log panel showing tool calls and results
   - Transport selector: stdio or Streamable HTTP
-  - API key input with dynamic provider dropdown
+  - Environment-variable based provider selection
 
 Run:
   macOS/Linux:  uv run python ui/app.py
@@ -61,6 +61,11 @@ PROVIDERS: dict[str, dict] = {
         "label": "OpenAI GPT",
         "model": "gpt-4o",
         "env_key": "OPENAI_API_KEY",
+    },
+    "google": {
+        "label": "Google Gemini",
+        "model": "gemini-2.5-flash",
+        "env_key": "GOOGLE_API_KEY",
     },
 }
 
@@ -212,6 +217,62 @@ async def _run_openai(messages: list[dict], claude_tools: list[dict]) -> str:
     return "⚠️ Tool call loop limit reached."
 
 
+async def _run_google(messages: list[dict], claude_tools: list[dict]) -> str:
+    """Agentic loop using Gemini OpenAI-compatible API."""
+    from openai import OpenAI
+
+    client = OpenAI(
+        api_key=os.environ["GOOGLE_API_KEY"],
+        base_url="https://generativelanguage.googleapis.com/v1beta/openai/",
+    )
+    model = PROVIDERS["google"]["model"]
+
+    # Convert MCP tools to OpenAI function format
+    openai_tools = []
+    for t in claude_tools:
+        openai_tools.append({
+            "type": "function",
+            "function": {
+                "name": t["name"],
+                "description": t["description"],
+                "parameters": t["input_schema"],
+            },
+        })
+
+    # Build OpenAI-style messages
+    oai_messages = [{"role": "system", "content": SYSTEM_PROMPT}]
+    for msg in messages:
+        role = msg.get("role", "user")
+        content = msg.get("content", "")
+        if isinstance(content, str) and role in ("user", "assistant"):
+            oai_messages.append({"role": role, "content": content})
+
+    for _ in range(10):
+        response = client.chat.completions.create(
+            model=model,
+            messages=oai_messages,
+            tools=openai_tools if openai_tools else None,
+        )
+
+        choice = response.choices[0]
+
+        if choice.finish_reason == "tool_calls" and choice.message.tool_calls:
+            oai_messages.append(choice.message)
+
+            for tc in choice.message.tool_calls:
+                args = json.loads(tc.function.arguments)
+                result = await mcp_client.call_tool(tc.function.name, args)
+                oai_messages.append({
+                    "role": "tool",
+                    "tool_call_id": tc.id,
+                    "content": result,
+                })
+        else:
+            return choice.message.content or ""
+
+    return "⚠️ Tool call loop limit reached."
+
+
 # ---------------------------------------------------------------------------
 # Main agent chat
 # ---------------------------------------------------------------------------
@@ -232,7 +293,13 @@ async def agent_chat(
 
     env_key = PROVIDERS[provider]["env_key"]
     if not os.environ.get(env_key, "").strip():
-        history.append({"role": "assistant", "content": f"⚠️ {env_key} not set. Enter it in the API Key field."})
+        history.append({
+            "role": "assistant",
+            "content": (
+                f"⚠️ {env_key} not set. Configure it in .env or environment "
+                "variables, then restart the UI."
+            ),
+        })
         return history, _format_logs()
 
     # Build messages from history
@@ -254,6 +321,8 @@ async def agent_chat(
             final_text = await _run_anthropic(messages, claude_tools)
         elif provider == "openai":
             final_text = await _run_openai(messages, claude_tools)
+        elif provider == "google":
+            final_text = await _run_google(messages, claude_tools)
         else:
             final_text = "⚠️ Provider not implemented."
     except Exception as e:
@@ -313,9 +382,8 @@ def build_ui() -> gr.Blocks:
             with gr.Column(scale=3):
                 chatbot = gr.Chatbot(
                     label="Chat",
-                    type="messages",
                     height=520,
-                    show_copy_button=True,
+                    buttons=["copy"],
                 )
                 with gr.Row():
                     msg_input = gr.Textbox(
@@ -331,7 +399,7 @@ def build_ui() -> gr.Blocks:
                         "노트북 재고가 몇 대 남았어?",
                         "VPN 설정 방법을 알려줘",
                         "모니터가 깜빡거려서 수리 요청하고 싶어",
-                        "원격근무 정책에서 해외 근무가 가능한가요?",
+                        "온보딩 체크리스트에서 첫 주에 해야 할 일 알려줘",
                         "What headsets do we have in stock?",
                     ],
                     inputs=msg_input,
@@ -352,16 +420,25 @@ def build_ui() -> gr.Blocks:
                 connection_status = gr.Markdown("_Not connected._")
 
                 gr.Markdown("### 🤖 LLM Provider")
-                api_key_input = gr.Textbox(
-                    label="API Key",
-                    placeholder="Enter API key (sk-ant-... or sk-...)",
-                    type="password",
+                available_providers = _detect_available_providers()
+                provider_choices = [
+                    (PROVIDERS[p]["label"], p)
+                    for p in available_providers
+                ]
+                provider_default = (
+                    available_providers[0] if available_providers else None
+                )
+                provider_info = (
+                    "Detected from .env/environment variables."
+                    if available_providers
+                    else "Set ANTHROPIC_API_KEY, OPENAI_API_KEY, or GOOGLE_API_KEY in .env/environment and restart."
                 )
                 provider_dropdown = gr.Dropdown(
-                    choices=[],
+                    choices=provider_choices,
+                    value=provider_default,
                     label="Provider",
                     interactive=True,
-                    info="Enter an API key above to enable providers",
+                    info=provider_info,
                 )
 
                 gr.Markdown("### 📋 MCP Tool Call Logs")
@@ -377,38 +454,20 @@ def build_ui() -> gr.Blocks:
         async def on_disconnect():
             return await disconnect_mcp()
 
-        def on_api_key_change(api_key: str):
-            """When user types an API key, detect provider and update dropdown."""
-            api_key = api_key.strip()
-            if not api_key:
-                return gr.update(choices=[], value=None)
-
-            # Auto-detect provider from key prefix
-            detected = []
-            if api_key.startswith("sk-ant-"):
-                os.environ["ANTHROPIC_API_KEY"] = api_key
-                detected.append("anthropic")
-            else:
-                # Default: try as OpenAI key
-                os.environ["OPENAI_API_KEY"] = api_key
-                detected.append("openai")
-
-            # Also include any previously-set providers
-            for key, cfg in PROVIDERS.items():
-                if os.environ.get(cfg["env_key"], "").strip() and key not in detected:
-                    detected.append(key)
-
-            labels = [(PROVIDERS[p]["label"], p) for p in detected]
-            default = detected[0] if detected else None
-            return gr.update(choices=labels, value=default)
-
         async def on_send(message, history, provider):
             if not message.strip():
                 return history, "", _format_logs()
             if not provider:
                 history = history or []
                 history.append({"role": "user", "content": message})
-                history.append({"role": "assistant", "content": "⚠️ Please enter an API key and select a provider."})
+                history.append({
+                    "role": "assistant",
+                    "content": (
+                        "⚠️ No provider available. Set ANTHROPIC_API_KEY, OPENAI_API_KEY, "
+                        "or GOOGLE_API_KEY "
+                        "in .env/environment and restart the UI."
+                    ),
+                })
                 return history, "", _format_logs()
             history = history or []
             history.append({"role": "user", "content": message})
@@ -417,7 +476,6 @@ def build_ui() -> gr.Blocks:
 
         connect_btn.click(fn=on_connect, inputs=[transport_radio], outputs=[connection_status])
         disconnect_btn.click(fn=on_disconnect, inputs=[], outputs=[connection_status])
-        api_key_input.change(fn=on_api_key_change, inputs=[api_key_input], outputs=[provider_dropdown])
 
         send_btn.click(
             fn=on_send,
