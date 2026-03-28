@@ -52,15 +52,15 @@ the user, and only create (confirm=True) if they approve.
 # LLM provider registry
 # ---------------------------------------------------------------------------
 PROVIDERS: dict[str, dict] = {
-    "anthropic": {
-        "label": "Anthropic Claude",
-        "model": "claude-sonnet-4-20250514",
-        "env_key": "ANTHROPIC_API_KEY",
-    },
     "openai": {
         "label": "OpenAI GPT",
         "model": "gpt-4o",
         "env_key": "OPENAI_API_KEY",
+    },
+    "anthropic": {
+        "label": "Anthropic Claude",
+        "model": "claude-sonnet-4-20250514",
+        "env_key": "ANTHROPIC_API_KEY",
     },
     "google": {
         "label": "Google Gemini",
@@ -309,7 +309,9 @@ async def agent_chat(
         content = msg.get("content", "")
         if role in ("user", "assistant") and content:
             messages.append({"role": role, "content": content})
-    messages.append({"role": "user", "content": message})
+    # Avoid duplicate user turns when the caller already appended it.
+    if not messages or messages[-1] != {"role": "user", "content": message}:
+        messages.append({"role": "user", "content": message})
 
     # Get tool definitions
     claude_tools = await mcp_client.get_claude_tools()
@@ -357,6 +359,20 @@ def _format_logs() -> str:
         )
 
     return "\n\n---\n\n".join(parts)
+
+
+def _render_chat_history(history: list[dict] | None) -> list[dict]:
+    """Filter chat history into Gradio Chatbot-compatible message dicts."""
+    if not history:
+        return []
+
+    rendered: list[dict] = []
+    for msg in history:
+        role = msg.get("role")
+        content = msg.get("content")
+        if role in ("user", "assistant") and isinstance(content, str):
+            rendered.append({"role": role, "content": content})
+    return rendered
 
 
 # ---------------------------------------------------------------------------
@@ -426,7 +442,9 @@ def build_ui() -> gr.Blocks:
                     for p in available_providers
                 ]
                 provider_default = (
-                    available_providers[0] if available_providers else None
+                    "openai"
+                    if "openai" in available_providers
+                    else (available_providers[0] if available_providers else None)
                 )
                 provider_info = (
                     "Detected from .env/environment variables."
@@ -446,6 +464,7 @@ def build_ui() -> gr.Blocks:
                     "_Connect to the server and send a message to see tool calls here._",
                     elem_classes="log-panel",
                 )
+                chat_state = gr.State([])
 
         # ----- Event handlers -----
         async def on_connect(transport):
@@ -454,13 +473,15 @@ def build_ui() -> gr.Blocks:
         async def on_disconnect():
             return await disconnect_mcp()
 
-        async def on_send(message, history, provider):
-            if not message.strip():
-                return history, "", _format_logs()
+        async def on_send(message, history_state, provider):
+            history_state = history_state or []
+            message = (message or "").strip()
+            if not message:
+                return _render_chat_history(history_state), "", _format_logs(), history_state
+
+            history_state.append({"role": "user", "content": message})
             if not provider:
-                history = history or []
-                history.append({"role": "user", "content": message})
-                history.append({
+                history_state.append({
                     "role": "assistant",
                     "content": (
                         "⚠️ No provider available. Set ANTHROPIC_API_KEY, OPENAI_API_KEY, "
@@ -468,24 +489,23 @@ def build_ui() -> gr.Blocks:
                         "in .env/environment and restart the UI."
                     ),
                 })
-                return history, "", _format_logs()
-            history = history or []
-            history.append({"role": "user", "content": message})
-            history, logs = await agent_chat(message, history, provider)
-            return history, "", logs
+                return _render_chat_history(history_state), "", _format_logs(), history_state
+
+            history_state, logs = await agent_chat(message, history_state, provider)
+            return _render_chat_history(history_state), "", logs, history_state
 
         connect_btn.click(fn=on_connect, inputs=[transport_radio], outputs=[connection_status])
         disconnect_btn.click(fn=on_disconnect, inputs=[], outputs=[connection_status])
 
         send_btn.click(
             fn=on_send,
-            inputs=[msg_input, chatbot, provider_dropdown],
-            outputs=[chatbot, msg_input, log_display],
+            inputs=[msg_input, chat_state, provider_dropdown],
+            outputs=[chatbot, msg_input, log_display, chat_state],
         )
         msg_input.submit(
             fn=on_send,
-            inputs=[msg_input, chatbot, provider_dropdown],
-            outputs=[chatbot, msg_input, log_display],
+            inputs=[msg_input, chat_state, provider_dropdown],
+            outputs=[chatbot, msg_input, log_display, chat_state],
         )
 
     return demo
