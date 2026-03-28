@@ -27,11 +27,35 @@ from src.models import AppContext, InventoryItem, PolicyDoc
 @pytest.fixture
 def sample_inventory() -> list[InventoryItem]:
     """샘플 재고 데이터 (3개 항목)."""
-    # TODO: InventoryItem 인스턴스 리스트 반환
-    #   - INV-001: Dell Latitude 5540 Laptop (Electronics, in_stock)
-    #   - INV-002: Ergonomic Office Chair (Furniture, in_stock)
-    #   - INV-003: USB-C Docking Station (Electronics, out_of_stock)
-    return []
+    return [
+        InventoryItem(
+            item_id="INV-001",
+            name="Dell Latitude 5540 Laptop",
+            category="Electronics",
+            quantity=25,
+            location="Warehouse A",
+            status="in_stock",
+            last_updated="2026-01-15",
+        ),
+        InventoryItem(
+            item_id="INV-002",
+            name="Ergonomic Office Chair",
+            category="Furniture",
+            quantity=50,
+            location="Warehouse B",
+            status="in_stock",
+            last_updated="2026-01-20",
+        ),
+        InventoryItem(
+            item_id="INV-003",
+            name="USB-C Docking Station",
+            category="Electronics",
+            quantity=0,
+            location="Warehouse A",
+            status="out_of_stock",
+            last_updated="2026-02-01",
+        ),
+    ]
 
 
 @pytest.fixture
@@ -40,18 +64,54 @@ def sample_policies(tmp_path: Path) -> list[PolicyDoc]:
     policy_dir = tmp_path / "policies"
     policy_dir.mkdir()
 
-    # TODO: 정책 1 — 재택근무 (remote-work.md)
-    #   - YAML front-matter: title, tags
-    #   - policy_dir / "remote-work.md" 에 write_text()
-    #
-    # TODO: 정책 2 — 보안 가이드라인 (security-guidelines.md)
-    #   - YAML front-matter: title, tags
-    #   - policy_dir / "security-guidelines.md" 에 write_text()
-    #
-    # TODO: PolicyDoc 리스트 반환
-    #   - PolicyDoc(doc_id="remote-work", title="재택근무 정책",
-    #               path=remote_work, tags=[...])
-    return []
+    remote_work = policy_dir / "remote-work.md"
+    remote_work.write_text(
+        "---\n"
+        "title: 재택근무 정책\n"
+        "tags: [remote, hr, work-from-home]\n"
+        "---\n"
+        "\n"
+        "# 재택근무 정책\n"
+        "\n"
+        "## 자격 요건\n"
+        "수습 기간을 완료한 모든 정규직 직원이 재택근무 대상입니다.\n"
+        "\n"
+        "## 장비 지원\n"
+        "회사에서 노트북과 모니터를 지급합니다.\n",
+        encoding="utf-8",
+    )
+
+    security = policy_dir / "security-guidelines.md"
+    security.write_text(
+        "---\n"
+        "title: 보안 가이드라인\n"
+        "tags: [security, it, compliance]\n"
+        "---\n"
+        "\n"
+        "# 보안 가이드라인\n"
+        "\n"
+        "## 비밀번호 정책\n"
+        "비밀번호는 최소 12자 이상, 대소문자·숫자·특수문자를 포함해야 합니다.\n"
+        "\n"
+        "## VPN 사용\n"
+        "사내 시스템 접근 시 반드시 VPN을 사용해야 합니다.\n",
+        encoding="utf-8",
+    )
+
+    return [
+        PolicyDoc(
+            doc_id="remote-work",
+            title="재택근무 정책",
+            path=remote_work,
+            tags=["remote", "hr", "work-from-home"],
+        ),
+        PolicyDoc(
+            doc_id="security-guidelines",
+            title="보안 가이드라인",
+            path=security,
+            tags=["security", "it", "compliance"],
+        ),
+    ]
 
 
 # ---------------------------------------------------------------------------
